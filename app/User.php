@@ -10,20 +10,40 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * Atributos que podem ser atribuídos em massa.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'nickname', 'birth', 'email', 'password',
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * Atributos que NÃO podem ser atribuídos em massa.
+     *
+     * @var array
+     */
+    protected $guarded = [
+        'id', 'created_at', 'updated_at',
+    ];
+
+    /**
+     * Atributos que devem ser ocultos para arrays.
      *
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
     ];
+
+    /**
+     * Relação um-para-um.
+     * Função que retorna o tipo relacionado ao usuário.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function typeUser()
+    {
+        return $this->belongsTo(TypeUser::class);
+    }
 }
