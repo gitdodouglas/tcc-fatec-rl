@@ -1,25 +1,28 @@
-app.controller("telaInicialController", function($scope,$http, SoulTeamService){	
-    
+app.controller("loginController", function($scope,$http, AutenticacaoService){	
+        
+    $scope.dados = {};
+
         $scope.limparDados = function(){
             $scope.dados = {
-                'nome' : '',
-                'email' : '',
-                'mensagem' : ''
+                'name' : ''
             };
         };
     
         $scope.limparDados();
     
         $scope.submit = function(){
-            $scope.result = SoulTeamService.enviarEmail($scope.dados).then(function (response) {			
+           
+            AutenticacaoService.logar($scope.dados).then(function (response) {	
+                console.log('response->',response.data);		
                 if((response.status == 200) && (response.data)){
-                    if(response.data.codigo == 'success'){	
-                        $scope.limparDados();				
-                        window.alert(response.data.mensagem);					
-                    }
-                    if(response.data.codigo == 'error'){					
-                        window.alert(response.data.mensagem);
-                    }					
+                    console.log('response->',response.data);
+                    // if(response.data.codigo == 'success'){	
+                    //     $scope.limparDados();				
+                    //     window.alert(response.data.mensagem);					
+                    // }
+                    // if(response.data.codigo == 'error'){					
+                    //     window.alert(response.data.mensagem);
+                    // }					
                 }else{
                     window.alert('Desculpe, não conseguimos enviar o seu contato neste momento. Lembrando que pode entrar em contato conosco por telefone ou enviando um email diretamente');
                 }

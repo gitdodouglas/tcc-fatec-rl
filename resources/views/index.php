@@ -14,12 +14,14 @@
     <script src="js/routes.js"></script>
     <script src="app.module.js"></script>
     <script src="app.routes.js"></script>
+    <script src="components/Autenticacao/services/service.js"></script>
+    <script src="components/Autenticacao/controllers/loginController.js"></script>    
     <!-- <script src="js/angular/services/service.js"></script>
     <script src="js/angular/controllers/contatosCtrl.js"></script> -->
   </head>
   <body ng-app="appModule" >
     <ng-view>     
     </ng-view>
-    <a href="#!principal">principal</a>
+    <a href="#principal">principal</a>
   </body>
 </html>

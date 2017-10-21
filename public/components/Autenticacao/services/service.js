@@ -1,17 +1,17 @@
-app.service('SoulTeamService', 
+app.service('AutenticacaoService', 
     function($http){
-        this.enviarEmail = function(dadosOk){
-            
+        this.logar = function(dados){
+            console.log('ok->',dados);
             return  $http({
                         method : "POST",
-                        url : "Modulos/Principal/Principal.php/login",
+                        url : "cadastro",
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
                         },
-                        data: { dados: dadosOk }
-                        
+                        data : $.param(dados.name)                 
                     });
         }
 
     }
 );
+
