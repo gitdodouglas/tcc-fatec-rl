@@ -7,13 +7,13 @@
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="../../public/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="../../public/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <script src="../../public/js/jquery.min.js"></script>
-    <script src="../../public/js/angular.min.js"></script>
-    <script src="../../public/js/routes.js"></script>
-    <script src="../../public/app.module.js"></script>
-    <script src="../../public/app.routes.js"></script>
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="app.module.js"></script>
+    <script src="app.routes.js"></script>
     <!-- <script src="js/angular/services/service.js"></script>
     <script src="js/angular/controllers/contatosCtrl.js"></script> -->
   </head>

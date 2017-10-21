@@ -7,7 +7,7 @@ app.config(function($routeProvider) {
         template : "<h1>Banana</h1><p>Bananas contain around 75% water.</p>"
     })
     .when("/principal", {
-        templateUrl : "Tela_Inicial/partials/tela-inicial.html"
+        templateUrl : "components/Tela_Inicial/partials/tela-inicial.html"
     });
 });
 

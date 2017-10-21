@@ -14,6 +14,24 @@
 /**
  * Rota responsável pela Página Inicial
  */
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::get('/', 'HomeController@index')->name('home');
+
+/**
+ * Rota responsável pelo login
+ */
+Route::post('/login', 'LoginController@index')->name('login');
+
+/**
+ * Rota responsável pelo cadastro
+ */
+Route::post('/cadastro', 'CadastroController@index')->name('cadastro');
+
+/**
+ * Rota responsável pela validação do cadastro
+ */
+Route::post('/valida', 'ValidaController@index')->name('valida');
+
+/**
+ * Rota responsável pela recuperação da senha
+ */
+Route::post('/recupera', 'RecuperaController@index')->name('recupera');
