@@ -5,10 +5,10 @@ app.service('AutenticacaoService',
             return  $http({
                         method : "POST",
                         url : "cadastro",
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+                        headers : {
+                            'Content-Type' : 'application/x-www-form-urlencoded'
                         },
-                        data : $.param(dados.name)                 
+                        data : $.param(dados)
                     });
         }
 

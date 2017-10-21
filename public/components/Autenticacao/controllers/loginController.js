@@ -1,6 +1,6 @@
 app.controller("loginController", function($scope,$http, AutenticacaoService){	
         
-    $scope.dados = {};
+    //$scope.dados = {};
 
         $scope.limparDados = function(){
             $scope.dados = {
@@ -15,7 +15,7 @@ app.controller("loginController", function($scope,$http, AutenticacaoService){
             AutenticacaoService.logar($scope.dados).then(function (response) {	
                 console.log('response->',response.data);		
                 if((response.status == 200) && (response.data)){
-                    console.log('response->',response.data);
+                    //console.log('response->',response.data);
                     // if(response.data.codigo == 'success'){	
                     //     $scope.limparDados();				
                     //     window.alert(response.data.mensagem);					

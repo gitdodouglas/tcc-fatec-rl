@@ -17,23 +17,23 @@ class CadastroController extends Controller
     {
         try {
             $user = new User;
-            $user->name = $request->name;
-            $user->nickname = '0';
-            $user->birth = '2015-10-10';
-            $user->email = '0';
-            $user->password = '0';
+            $user->name = $request->input('name');
+            $user->nickname = $request->input('nickname');
+            $user->birth = $request->input('birth');
+            $user->email = $request->input('email');
+            $user->password = bcrypt($request->input('password'));
             $user->type_user_id = 1;
             $user->save();
             return [
-                'data' => $user,
                 'codigo' => '0',
-                'mensagem' => 'Cadastrado com sucesso'
+                'objeto' => $user,
+                'mensagem' => 'Cadastrado com sucesso',
             ];
-        } catch (Exception $e) {
+        } catch (Exception $exception) {
             return [
-                'data' => '',
                 'codigo' => '1',
-                'mensagem' => $e->getMessage()
+                'objeto' => '',
+                'mensagem' => $exception->getMessage(),
             ];
         }
     }
