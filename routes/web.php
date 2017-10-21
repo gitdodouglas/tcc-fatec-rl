@@ -24,7 +24,8 @@ Route::post('/login', 'LoginController@index')->name('login');
 /**
  * Rota responsável pelo cadastro
  */
-Route::post('/cadastro', 'CadastroController@index')->name('cadastro');
+Route::get('/cadastro', 'CadastroController@index');
+Route::post('/cadastro', 'CadastroController@store')->name('cadastro');
 
 /**
  * Rota responsável pela validação do cadastro
