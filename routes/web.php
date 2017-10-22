@@ -11,28 +11,29 @@
 |
 */
 
-/**
- * Rota responsável pela Página Inicial
+/*
+|--------------------------------------------------------------------------
+| Rotas do módulo de autenticação
+|--------------------------------------------------------------------------
  */
+
+/* Página inicial */
 Route::get('/', 'HomeController@index')->name('home');
 
-/**
- * Rota responsável pelo login
- */
-Route::post('/login', 'LoginController@index')->name('login');
+/* Login do usuário */
+Route::get('login', 'LoginController@index');
+Route::post('login', 'LoginController@login')->name('login');
 
-/**
- * Rota responsável pelo cadastro
- */
-Route::get('/cadastro', 'CadastroController@index');
-Route::post('/cadastro', 'CadastroController@store')->name('cadastro');
+/* Cadastro do usuário */
+Route::get('cadastro', 'CadastroController@index');
+Route::post('cadastro', 'CadastroController@create')->name('cadastro');
 
-/**
- * Rota responsável pela validação do cadastro
- */
-Route::post('/valida', 'ValidaController@index')->name('valida');
+/* Validação do cadastro do usuário */
+Route::get('valida', 'ValidaController@index');
+Route::post('valida', 'ValidaController@verify')->name('valida');
 
-/**
- * Rota responsável pela recuperação da senha
- */
-Route::post('/recupera', 'RecuperaController@index')->name('recupera');
+/* Recuperação da senha do usuário */
+Route::get('recupera', 'RecuperaController@index');
+Route::post('recupera', 'RecuperaController@reset')->name('recupera');
+
+/*-----------------------------------------------------------------------*/
