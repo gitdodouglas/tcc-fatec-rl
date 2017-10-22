@@ -52,7 +52,7 @@ class CadastroController extends Controller
             $validationController->create($pass, $user->id, $user->email, 1);
 
             /* Envia o e-mail */
-            $this->sendEmail($user->email, $pass);
+            //$this->sendEmail($user->email, $pass);
 
             return [
                 'codigo' => '0',
