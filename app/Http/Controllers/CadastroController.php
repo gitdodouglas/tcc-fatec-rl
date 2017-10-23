@@ -8,14 +8,14 @@ use Mockery\Exception;
 class CadastroController extends Controller
 {
     /**
-     * Função que retorna a view 'index'.
+     * Função que redireciona para a home do sistema.
      * Utilizada quando a rota é acessada por um método GET.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        return view('index');
+        return redirect('/');
     }
 
     /**
@@ -69,7 +69,7 @@ class CadastroController extends Controller
     }
 
     /**
-     * Função responsável pelo envio da confirmação do cadastro.
+     * Função responsável pelo envio do e-mail de confirmação do cadastro.
      *
      * @param $email
      * @param $pass

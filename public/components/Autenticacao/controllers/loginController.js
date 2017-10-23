@@ -8,7 +8,7 @@ app.controller("loginController", function($scope,$http, AutenticacaoService){
             };
         };
     
-        $scope.limparDados();
+        //$scope.limparDados();
     
         $scope.submit = function(){
            

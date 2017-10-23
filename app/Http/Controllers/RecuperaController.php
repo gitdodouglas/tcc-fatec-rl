@@ -8,7 +8,7 @@ class RecuperaController extends Controller
 {
     public function index()
     {
-        return view('index');
+        return redirect('/');
     }
 
     public function reset(Request $request)

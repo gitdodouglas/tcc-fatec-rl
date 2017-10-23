@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Validation;
-use Illuminate\Http\Request;
 
 class ValidationController extends Controller
 {
+    public function showAll()
+    {
+        return Validation::all();
+    }
+
     public function create($validation, $userId, $userEmail, $typeValidationId)
     {
         $val = new Validation;
@@ -16,5 +20,32 @@ class ValidationController extends Controller
         $val->type_validation_id = $typeValidationId;
         $val->save();
         return $val;
+    }
+
+    public function read($id)
+    {
+        return $this->getValidation($id);
+    }
+
+    public function update()
+    {
+        //
+    }
+
+    public function delete($id)
+    {
+        $val = $this->getValidation($id);
+        $val->delete();
+        return $val->id;
+    }
+
+    public function query($key, $value)
+    {
+        return Validation::where($key, $value)->first();
+    }
+
+    private function getValidation($id)
+    {
+        return Validation::find($id);
     }
 }

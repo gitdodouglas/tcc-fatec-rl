@@ -25,6 +25,15 @@ class Validation extends Model
     ];
 
     /**
+     * Atributos que devem ser ocultos para arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'validation',
+    ];
+
+    /**
      * Relação um-para-um.
      * Função que retorna o tipo relacionado à validação.
      *
