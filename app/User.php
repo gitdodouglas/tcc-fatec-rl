@@ -46,4 +46,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(TypeUser::class);
     }
+
+    /**
+     * Desabilita a função RememberToken.
+     *
+     * @return null
+     */
+    public function getRememberTokenName()
+    {
+        return null;
+    }
 }

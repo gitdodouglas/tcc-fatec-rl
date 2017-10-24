@@ -17,12 +17,19 @@
 |--------------------------------------------------------------------------
  */
 
+/* Rota de teste - Requer autenticação para acessar */
+Route::get('/app', 'AppController@index');
+
 /* Página inicial */
 Route::get('/', 'HomeController@index')->name('home');
 
 /* Login do usuário */
 Route::get('login', 'LoginController@index');
 Route::post('login', 'LoginController@login')->name('login');
+
+/* Logout do usuário */
+Route::get('logout', 'LogoutController@index');
+Route::post('logout', 'LogoutController@logout')->name('logout');
 
 /* Cadastro do usuário */
 Route::get('cadastro', 'CadastroController@index');
