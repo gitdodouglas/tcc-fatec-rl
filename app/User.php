@@ -48,6 +48,17 @@ class User extends Authenticatable
     }
 
     /**
+     * Relação um-para-muitos.
+     * Função que retorna o desempenho relacionado ao usuário.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function performances()
+    {
+        return $this->hasMany(Performance::class);
+    }
+
+    /**
      * Desabilita a função RememberToken.
      *
      * @return null
