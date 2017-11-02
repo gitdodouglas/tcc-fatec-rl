@@ -1,11 +1,13 @@
-app.controller("loginController", function($scope,$http, AutenticacaoService){	
+app.controller("cadastroController", function($scope,$http, AutenticacaoService){	
         
     //$scope.dados = {};
 
         $scope.limparDados = function(){
             $scope.dados = {
-                'email' : '',
-                'password' : ''
+                'name' : '',
+                'nickname' : '',
+                'birth' : '',
+                'email' : ''
             };
         };
     
@@ -14,7 +16,7 @@ app.controller("loginController", function($scope,$http, AutenticacaoService){
         $scope.submit = function(){
             
             
-            AutenticacaoService.logar($scope.dados).then(function (response) {	
+            AutenticacaoService.cadastrar($scope.dados).then(function (response) {	
                 console.log('response->',response.data);		
                 if((response.status == 200) && (response.data)){
                     //console.log('response->',response.data);
