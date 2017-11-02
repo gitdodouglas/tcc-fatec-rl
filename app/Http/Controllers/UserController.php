@@ -12,14 +12,16 @@ class UserController extends Controller
         return User::all();
     }
 
-    public function create(Request $request, $typeUserId)
+    public function create(Request $request, $pass, $typeUserId)
     {
         $user = new User;
-        $user->name = $request->input('name');
-        $user->nickname = $request->input('nickname');
-        $user->birth = $request->input('birth');
-        $user->email = $request->input('email');
-        $user->password = bcrypt(microtime());
+        $user->name = $request->json('name');
+        $user->nickname = $request->json('nickname');
+        if (!$user->birth = date_create(str_replace('/', '-', $request->json('birth')))) {
+            throw new \Exception('Data de nascimento inválida.');
+        }
+        $user->email = $request->json('email');
+        $user->password = bcrypt($pass);
         $user->type_user_id = $typeUserId;
         $user->save();
         return $user;

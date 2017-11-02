@@ -17,11 +17,11 @@ app.controller("cadastroController", function($scope,$http, AutenticacaoService)
             
             
             AutenticacaoService.cadastrar($scope.dados).then(function (response) {	
-                console.log('response->',response.data);		
+                console.log('response->',response.data);
                 if((response.status == 200) && (response.data)){
                     //console.log('response->',response.data);
                     // if(response.data.codigo == 'success'){	
-                    //     $scope.limparDados();				
+                    //     $scope.limparDados();
                     //     window.alert(response.data.mensagem);					
                     // }
                     // if(response.data.codigo == 'error'){					
@@ -29,7 +29,7 @@ app.controller("cadastroController", function($scope,$http, AutenticacaoService)
                     // }	
                     Materialize.toast(response.data.mensagem, 4000);				
                 }else{
-                    window.alert('Desculpe, não conseguimos enviar o seu contato neste momento. Lembrando que pode entrar em contato conosco por telefone ou enviando um email diretamente');
+                    Materialize.toast('Desculpe, não foi possível realizar o seu cadastro neste momento.', 4000);
                 }
             });
         

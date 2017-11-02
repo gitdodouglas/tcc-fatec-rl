@@ -1,5 +1,5 @@
- <div ng-controller="cadastroController">    
-    <div class="container">       
+<div ng-controller="cadastroController">
+    <div class="container">
         <div class="row">
             <div class="col s12 m6" >
                 <div class="section">
@@ -8,48 +8,45 @@
                             <h5>Cadastre-se e aprenda o melhor do melhor.</h5>
                         </div>
                         <div class="input-field col s12">
-                            <input id="txtName" type="text" ng-model="dados.name" class="validate">
-                            <label for="txtName">Nome</label>
+                            <input id="txtName" type="text" name="nome" ng-model="dados.name" class="validate">
+                            <label for="txtName">Nome completo</label>
                         </div>
                         <div class="input-field col s12">
-                            <input  id="txtEmail" name="senha" type="email" ng-model="dados.password" class="validate">
+                            <input id="txtNickname" type="text" name="usuario" ng-model="dados.nickname" class="validate">
+                            <label for="txtNickname">Nome de usuário</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="txtBirth" type="text" name="nascimento" ng-model="dados.birth" class="validate">
+                            <label for="txtBirth">Data de nascimento</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="txtEmail" type="email" name="email" ng-model="dados.email" class="validate">
                             <label for="txtEmail">E-mail</label>
                         </div>
-                        <div class="input-field col s12">
-                            <input  id="txtPassword" name="password" type="password" ng-model="dados.password" class="validate">
-                            <label for="txtPassword">Senha</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <input  id="txtConfPassword" name="password" type="password" ng-model="dados.confPassword" class="validate">
-                            <label for="txtConfPassword">Repita a senha</label>
-                        </div>
-                        <div class="col s12"> 
-                            <a href="" >Esqueci minha senha</a>
-                        </div>
                         <div class="col s12" style="margin-top: 20px;">
-                            <button class="waves-effect waves-light btn  light-blue darken-1" type="button" ng-click="submit()" >OK</button>
-                        </div>                    
-                        
+                            <button class="waves-effect waves-light btn  light-blue darken-1" type="button" ng-click="submit()" >CADASTRAR</button>
+                        </div>
+
                     </form>
                 </div>
             </div>
-                
+
             <div class="col s12 offset-m2 m4"  >
                 <div class="section" >
                     <div class="col s12 card-panel hoverable" style="margin-top:40px;background:#ffffff;  padding:40px;">
                         <div class="col s12">
-                            <p>Já possui cadastro?</p>
+                            <h5>Possui cadastro?</h5>
                         </div>
                         <div class="col s12">
                             <p>Entre e continue de onde você parou.</p>
                         </div>
                         <div class="col s12" style="text-align:center;">
-                            <a href="#!login" class="waves-effect waves-light btn green darken-1" type="button" >Entrar</a>                        
+                            <a href="#!login" class="waves-effect waves-light btn green darken-1" type="button" >Entrar</a>
                         </div>
                     </div>
                 </div>
-            </div>  
-        </div>          
-        
+            </div>
+        </div>
+
     </div>
- </div>
+</div>

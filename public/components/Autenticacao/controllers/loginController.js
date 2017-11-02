@@ -1,4 +1,4 @@
-app.controller("loginController", function($scope,$http, AutenticacaoService){	
+app.controller("loginController", function($scope,$http, AutenticacaoService){
         
     //$scope.dados = {};
 
@@ -24,10 +24,13 @@ app.controller("loginController", function($scope,$http, AutenticacaoService){
                     // }
                     // if(response.data.codigo == 'error'){					
                     //     window.alert(response.data.mensagem);
-                    // }	
+                    // }
+                    if (response.data.codigo == 'sucess') {
+                        window.location.assign("/#!app");
+                    }
                     Materialize.toast(response.data.mensagem, 4000);				
                 }else{
-                    window.alert('Desculpe, não conseguimos enviar o seu contato neste momento. Lembrando que pode entrar em contato conosco por telefone ou enviando um email diretamente');
+                    Materialize.toast('Desculpe, não foi possível realizar o seu login neste momento.', 4000);
                 }
             });
         

@@ -55,18 +55,14 @@
             </ul>
 
                <ul id="nav-mobile" class="side-nav">
-               <li><a href="#!" style="color:#212121;">Início</a></li> 
+               <li><a href="#!" style="color:#212121;">Início</a></li>
                <li><a href="#!cadastro" style="color:#212121;">Cadastre-se</a></li>
-               <li><a href="#!login" style="color:#212121;">Entrar</a></li>          
+               <li><a href="#!login" style="color:#212121;">Entrar</a></li>
             </ul>
             <a href="" data-activates="nav-mobile" style="color:#212121;" class="button-collapse"><i class="material-icons">menu</i></a>
          </div>
       </nav>  
       <ng-view>     
       </ng-view>
-
-      <a href="#!principal">principal</a>
-      <a href="#!login">login</a>
-   
    </body>
 </html>
