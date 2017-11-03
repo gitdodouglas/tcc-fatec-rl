@@ -25,7 +25,7 @@ app.controller("loginController", function($scope,$http, AutenticacaoService){
                     // if(response.data.codigo == 'error'){					
                     //     window.alert(response.data.mensagem);
                     // }
-                    if (response.data.codigo == 'sucess') {
+                    if (response.data.codigo == 'success') {
                         window.location.assign("/#!app");
                     }
                     Materialize.toast(response.data.mensagem, 4000);				

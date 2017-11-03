@@ -27,24 +27,23 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-        /* Verifica a entrada de dados */
-        if ($request->json('email') == "" || $request->json('password') == "") {
-            return [
-                'codigo' => 'error',
-                'objeto' => null,
-                'mensagem' => 'Todos os campos são de preenchimento obrigatório.',
-            ];
-        }
-
-        /* Gera o token de validação da sessão */
-        $token = hash('sha256', $request . microtime());
-
         try {
+            /* Verifica a entrada de dados */
+            if ($request->json('email') == "" || $request->json('password') == "") {
+                throw new \Exception('Todos os campos são de preenchimento obrigatório.');
+            }
+
+            /* Gera o token de validação da sessão */
+            $token = hash('sha256', $request . microtime());
+
             /* Instancia o controller de usuário */
             $userController = new UserController;
 
             /* Verifica se o usuário existe */
             if ($user = $userController->query('email', $request->json('email'))) {
+
+                /* Armazena o token em session */
+                session()->put('$_TOKEN', $token);
 
                 /* Verifica se o cadastro foi validado */
                 if ($user->created_at == $user->updated_at && Hash::check($request->json('password'), $user->password)) {
@@ -53,43 +52,29 @@ class LoginController extends Controller
                         'objeto' => [
                             'codigo_tipo' => 1,
                             'info' => $user->email,
+                            'token' => $token,
                         ],
-                        'token' => $token,
                         'mensagem' => 'É necessário que valide o seu e-mail antes de efetuar o login pela primeira vez.',
                     ];
                 } else {
                     /* Realiza a tentativa de login usando o e-mail e senha informados */
                     if (Auth::attempt(['email' => $request->json('email'), 'password' => $request->json('password')])) {
-                        /* Instancia o controller de validação */
-                        $validationController = new ValidationController;
-
-                        /* Cria a validação */
-                        $validationController->create(Auth::user(), $token, 1);
-
                         return [
                             'codigo' => 'success',
                             'objeto' => [
-                                'codigo_tipo' => 0,
+                                'codigo_tipo' => '0',
                                 'info' => Auth::user(),
+                                'token' => $token,
                             ],
-                            'token' => $token,
                             'mensagem' => null,
                         ];
                     } else {
-                        return [
-                            'codigo' => 'error',
-                            'objeto' => null,
-                            'mensagem' => 'E-mail ou senha inválidos.',
-                        ];
+                        throw new \Exception('E-mail ou senha inválidos.');
                     }
                 }
 
             } else {
-                return [
-                    'codigo' => 'error',
-                    'objeto' => null,
-                    'mensagem' => 'E-mail ou senha inválidos.',
-                ];
+                throw new \Exception('E-mail ou senha inválidos.');
             }
         } catch (\Exception $exception) {
             return [
