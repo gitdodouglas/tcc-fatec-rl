@@ -36,6 +36,9 @@ class LoginController extends Controller
             ];
         }
 
+        /* Gera o token de validação da sessão */
+        $token = hash('sha256', $request . microtime());
+
         try {
             /* Instancia o controller de usuário */
             $userController = new UserController;
@@ -46,8 +49,12 @@ class LoginController extends Controller
                 /* Verifica se o cadastro foi validado */
                 if ($user->created_at == $user->updated_at && Hash::check($request->json('password'), $user->password)) {
                     return [
-                        'codigo' => 'error',
-                        'objeto' => null,
+                        'codigo' => 'success',
+                        'objeto' => [
+                            'codigo_tipo' => 1,
+                            'info' => $user->email,
+                        ],
+                        'token' => $token,
                         'mensagem' => 'É necessário que valide o seu e-mail antes de efetuar o login pela primeira vez.',
                     ];
                 } else {
@@ -56,15 +63,15 @@ class LoginController extends Controller
                         /* Instancia o controller de validação */
                         $validationController = new ValidationController;
 
-                        /* Gera o token de validação da sessão */
-                        $token = hash('sha256', $request . microtime());
-
                         /* Cria a validação */
                         $validationController->create(Auth::user(), $token, 1);
 
                         return [
                             'codigo' => 'success',
-                            'objeto' => Auth::user(),
+                            'objeto' => [
+                                'codigo_tipo' => 0,
+                                'info' => Auth::user(),
+                            ],
                             'token' => $token,
                             'mensagem' => null,
                         ];
