@@ -57,7 +57,7 @@ class CadastroController extends Controller
             //$this->sendEmail($user->email, $pass);
 
             return [
-                'codigo' => 'sucess',
+                'codigo' => 'success',
                 'objeto' => $user,
                 'mensagem' => "Enviamos uma mensagem para $user->email para confirmar o seu cadastro.",
             ];

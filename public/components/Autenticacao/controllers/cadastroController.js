@@ -20,9 +20,9 @@ app.controller("cadastroController", function($scope,$http, AutenticacaoService)
                 console.log('response->',response.data);
                 if((response.status == 200) && (response.data)){
                     //console.log('response->',response.data);
-                    // if(response.data.codigo == 'success'){	
+                    // if(response.data.codigo == 'success'){
                     //     $scope.limparDados();
-                    //     window.alert(response.data.mensagem);					
+                    //     window.alert(response.data.mensagem);
                     // }
                     // if(response.data.codigo == 'error'){					
                     //     window.alert(response.data.mensagem);

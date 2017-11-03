@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -43,7 +44,7 @@ class LoginController extends Controller
             if ($user = $userController->query('email', $request->json('email'))) {
 
                 /* Verifica se o cadastro foi validado */
-                if ($user->created_at == $user->updated_at) {
+                if ($user->created_at == $user->updated_at && Hash::check($request->json('password'), $user->password)) {
                     return [
                         'codigo' => 'error',
                         'objeto' => null,
@@ -52,9 +53,19 @@ class LoginController extends Controller
                 } else {
                     /* Realiza a tentativa de login usando o e-mail e senha informados */
                     if (Auth::attempt(['email' => $request->json('email'), 'password' => $request->json('password')])) {
+                        /* Instancia o controller de validação */
+                        $validationController = new ValidationController;
+
+                        /* Gera o token de validação da sessão */
+                        $token = hash('sha256', $request . microtime());
+
+                        /* Cria a validação */
+                        $validationController->create(Auth::user(), $token, 1);
+
                         return [
-                            'codigo' => 'sucess',
+                            'codigo' => 'success',
                             'objeto' => Auth::user(),
+                            'token' => $token,
                             'mensagem' => null,
                         ];
                     } else {

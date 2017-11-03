@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Validation;
 
 class ValidationController extends Controller
@@ -11,12 +12,12 @@ class ValidationController extends Controller
         return Validation::all();
     }
 
-    public function create($validation, $userId, $userEmail, $typeValidationId)
+    public function create(User $user, $validation, $typeValidationId)
     {
         $val = new Validation;
         $val->validation = bcrypt($validation);
-        $val->user_id = $userId;
-        $val->user_email = $userEmail;
+        $val->user_id = $user->id;
+        $val->user_email = $user->email;
         $val->type_validation_id = $typeValidationId;
         $val->save();
         return $val;
