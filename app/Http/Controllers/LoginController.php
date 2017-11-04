@@ -45,13 +45,16 @@ class LoginController extends Controller
                 /* Armazena o token em session */
                 session()->put('$_TOKEN', $token);
 
+                /* Armazena o e-mail em session */
+                session()->put('$_EMAIL', $user->email);
+
                 /* Verifica se o cadastro foi validado */
                 if ($user->created_at == $user->updated_at && Hash::check($request->json('password'), $user->password)) {
                     return [
                         'codigo' => 'success',
                         'objeto' => [
                             'codigo_tipo' => 1,
-                            'info' => $user->email,
+                            'info' => $user,
                             'token' => $token,
                         ],
                         'mensagem' => 'É necessário que valide o seu e-mail antes de efetuar o login pela primeira vez.',

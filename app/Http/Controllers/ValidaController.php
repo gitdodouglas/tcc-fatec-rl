@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Mockery\Exception;
+use Illuminate\Support\Facades\Auth;
 
 class ValidaController extends Controller
 {
@@ -16,7 +15,7 @@ class ValidaController extends Controller
      */
     public function index()
     {
-        return redirect('/#/valida');
+        return redirect('/#!valida');
     }
 
     /**
@@ -28,42 +27,66 @@ class ValidaController extends Controller
     public function verify(Request $request)
     {
         try {
-            /* Instancia o controller de usuário */
-            $userController = new UserController;
-
-            /* Localiza o usuário com base no e-mail informado */
-            $user = $userController->query('email', $request->input('email'));
-
-            /* Instancia o controller de validação */
-            $validationController = new ValidationController;
-
-            /* Localiza a validação com base no ID do usuário */
-            $val = $validationController->query('user_id', $user->id);
-
-            /* Verifica se a senha de primeiro acesso informada é a mesma que consta no BD */
-            if (Hash::check($request->input('firstPassword'), $val->validation)) {
-                /* Deleta a validação do BD */
-                $val->delete();
-
-                /* Atualiza a senha do usuário */
-                $user->password = bcrypt($request->input('password'));
-                $user->save();
-
-                return [
-                    'codigo' => '0',
-                    'objeto' => $val,
-                    'mensagem' => 'E-mail verificado com sucesso!',
-                ];
+            /* Verifica se a origem da requisição está autorizada */
+            if ($request->json('token') != ( md5(session()->get('$_EMAIL') . session()->get('$_TOKEN')) )) {
+                throw new \Exception('Acesso não autorizado.');
             } else {
-                return [
-                    'codigo' => '1',
-                    'objeto' => null,
-                    'mensagem' => 'Não foi possível verificar o e-mail.',
-                ];
+
+                /* Verifica a entrada de dados */
+                if ($request->json('default_password') == "" || $request->json('new_password') == "" || $request->json('confirm_password') == "") {
+                    throw new \Exception('Todos os campos são de preenchimento obrigatório.');
+                } else {
+
+                    /* Verifica se a senha digitada é igual a confirmação da senha */
+                    if ($request->json('new_password') != $request->json('confirm_password')) {
+                        throw new \Exception('A senhas digitadas não conferem.');
+                    } else {
+
+                        /* Instancia o controller de usuário */
+                        $userController = new UserController;
+
+                        /* Localiza o usuário com base no e-mail informado */
+                        $user = $userController->query('email', session()->get('$_EMAIL'));
+
+                        /* Verifica se a senha de primeiro acesso informada é a mesma que consta no BD */
+                        if (Hash::check($request->json('default_password'), $user->password)) {
+
+                            /* Atualiza a senha do usuário */
+                            $user->password = bcrypt($request->json('new_password'));
+                            $user->save();
+
+                            /* Realiza a tentativa de login usando o e-mail e senha informados */
+                            if (Auth::attempt(['email' => session()->get('$_EMAIL'), 'password' => $request->json('new_password')])) {
+
+                                /* Gera o token de validação da sessão */
+                                $token = hash('sha256', $request . microtime());
+
+                                /* Armazena o token em session */
+                                session()->put('$_TOKEN', $token);
+
+                                return [
+                                    'codigo' => 'success',
+                                    'objeto' => [
+                                        'info' => Auth::user(),
+                                        'token' => $token,
+                                    ],
+                                    'mensagem' => null,
+                                ];
+                            } else {
+                                throw new \Exception('Não foi possível realizar a autenticação.');
+                            }
+
+                        } else {
+                            throw new \Exception('A senha enviada por e-mail não confere.');
+                        }
+
+                    }
+
+                }
             }
-        } catch (Exception $exception) {
+        } catch (\Exception $exception) {
             return [
-                'codigo' => '1',
+                'codigo' => 'error',
                 'objeto' => null,
                 'mensagem' => $exception->getMessage(),
             ];
