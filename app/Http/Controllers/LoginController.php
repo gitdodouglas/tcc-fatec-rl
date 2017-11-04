@@ -54,10 +54,10 @@ class LoginController extends Controller
                         'codigo' => 'success',
                         'objeto' => [
                             'codigo_tipo' => 1,
-                            'info' => $user,
+                            'info' => $user->email,
                             'token' => $token,
                         ],
-                        'mensagem' => 'É necessário que valide o seu e-mail antes de efetuar o login pela primeira vez.',
+                        'mensagem' => 'É necessário que altere a sua senha antes de efetuar o login pela primeira vez.',
                     ];
                 } else {
                     /* Realiza a tentativa de login usando o e-mail e senha informados */

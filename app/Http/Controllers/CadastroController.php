@@ -46,7 +46,7 @@ class CadastroController extends Controller
             $user = $userController->create($request, $pass, 2);
 
             /* Envia o e-mail */
-            //$this->sendEmail($user->email, $pass);
+            $this->sendEmail($user->email, $pass);
 
             return [
                 'codigo' => 'success',

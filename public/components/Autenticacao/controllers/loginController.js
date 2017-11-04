@@ -33,7 +33,12 @@ app.controller("loginController", function($scope, $http, md5, $cookieStore, Aut
                         var obj = response.data.objeto;
                         //window.location.assign("/#!app");
                         if(obj.codigo_tipo == 1){
-                            $cookieStore.put('token',(response.data.token+obj.info));
+                            $cookieStore.put('token',(obj.info+obj.token));
+                            window.location.assign("/#!trocarSenha");
+                        }
+                        if(obj.codigo_tipo == 0){
+                            $cookieStore.put('token',(obj.info+obj.token));
+                            window.location.assign("/app");
                         }
 
                     }

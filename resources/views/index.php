@@ -60,7 +60,7 @@
             <a id="logo-container" style="color:#1a237e;" href="#" class="brand-logo">Logo</a>
             <ul class="right hide-on-med-and-down">
                <li><a href="#!login"style="color:#212121;">Entrar</a></li>
-               <li><a href="#!trocarSenha"style="color:#212121;">trocar</a></li>
+               <!-- <li><a href="#!trocarSenha"style="color:#212121;">trocar</a></li> -->
                <li><a href="#!cadastro"class="waves-effect waves-light btn green darken-2" >Cadastre-se</a></li>
             </ul>
 

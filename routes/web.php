@@ -36,8 +36,8 @@ Route::get('cadastro', 'CadastroController@index');
 Route::post('cadastro', 'CadastroController@create')->name('cadastro');
 
 /* Validação do cadastro do usuário */
-Route::get('valida', 'ValidaController@index');
-Route::post('valida', 'ValidaController@verify')->name('valida');
+Route::get('altera', 'AlteraController@index');
+Route::post('altera', 'AlteraController@verify')->name('altera');
 
 /* Recuperação da senha do usuário */
 Route::get('recupera', 'RecuperaController@index');

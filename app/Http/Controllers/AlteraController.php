@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
-class ValidaController extends Controller
+class AlteraController extends Controller
 {
     /**
      * Função que redireciona para a url correta.
@@ -15,7 +16,7 @@ class ValidaController extends Controller
      */
     public function index()
     {
-        return redirect('/#!valida');
+        return redirect('/#!trocarSenha');
     }
 
     /**
@@ -33,12 +34,12 @@ class ValidaController extends Controller
             } else {
 
                 /* Verifica a entrada de dados */
-                if ($request->json('default_password') == "" || $request->json('new_password') == "" || $request->json('confirm_password') == "") {
+                if ($request->json('antigaSenha') == "" || $request->json('novaSenha') == "" || $request->json('confNovaSenha') == "") {
                     throw new \Exception('Todos os campos são de preenchimento obrigatório.');
                 } else {
 
                     /* Verifica se a senha digitada é igual a confirmação da senha */
-                    if ($request->json('new_password') != $request->json('confirm_password')) {
+                    if ($request->json('novaSenha') != $request->json('confNovaSenha')) {
                         throw new \Exception('A senhas digitadas não conferem.');
                     } else {
 
@@ -49,14 +50,14 @@ class ValidaController extends Controller
                         $user = $userController->query('email', session()->get('$_EMAIL'));
 
                         /* Verifica se a senha de primeiro acesso informada é a mesma que consta no BD */
-                        if (Hash::check($request->json('default_password'), $user->password)) {
+                        if (Hash::check($request->json('antigaSenha'), $user->password)) {
 
                             /* Atualiza a senha do usuário */
-                            $user->password = bcrypt($request->json('new_password'));
+                            $user->password = bcrypt($request->json('novaSenha'));
                             $user->save();
 
                             /* Realiza a tentativa de login usando o e-mail e senha informados */
-                            if (Auth::attempt(['email' => session()->get('$_EMAIL'), 'password' => $request->json('new_password')])) {
+                            if (Auth::attempt(['email' => session()->get('$_EMAIL'), 'password' => $request->json('novaSenha')])) {
 
                                 /* Gera o token de validação da sessão */
                                 $token = hash('sha256', $request . microtime());

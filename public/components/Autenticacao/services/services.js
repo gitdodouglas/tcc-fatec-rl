@@ -1,6 +1,6 @@
 app.service('AutenticacaoService', 
     function($http){
-        this.logar = function(dados){    
+        this.logar = function(dados){
             return  $http({
                 method : "POST",
                 url : "login",
@@ -23,10 +23,11 @@ app.service('AutenticacaoService',
         };
 
         this.trocarSenha = function(dados,token){
+            console.log(dados);
             dados.token = token;     
             return  $http({
                 method : "POST",
-                url : "cadastro",
+                url : "altera",
                 headers : {
                     'Content-Type' : 'application/x-www-form-urlencoded'
                 },
