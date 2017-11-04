@@ -22,8 +22,19 @@ app.service('AutenticacaoService',
             });
         };
 
-        this.trocarSenha = function(dados,token){
-            console.log(dados);
+        this.trocarSenha = function(dados,token){            
+            dados.token = token;     
+            return  $http({
+                method : "POST",
+                url : "altera",
+                headers : {
+                    'Content-Type' : 'application/x-www-form-urlencoded'
+                },
+                data : dados
+            });
+        };
+
+        this.esqueciSenha = function(dados,token){      
             dados.token = token;     
             return  $http({
                 method : "POST",

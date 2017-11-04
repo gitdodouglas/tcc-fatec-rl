@@ -15,6 +15,9 @@ app.config(function($routeProvider) {
     .when("/trocarSenha", {
         templateUrl : "components/Autenticacao/partials/tela-trocar-senha.html"
     })
+    .when("/esqueciSenha", {
+        templateUrl : "components/Autenticacao/partials/tela-esqueci-senha.html"
+    })
     .otherwise({
         template : "<h1>Main</h1><p>Click on the links to change this content</p>"
     });

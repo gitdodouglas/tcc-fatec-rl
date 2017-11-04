@@ -50,7 +50,8 @@
       <script src="components/Autenticacao/services/services.js"></script>
       <script src="components/Autenticacao/controllers/loginController.js"></script> 
       <script src="components/Autenticacao/controllers/cadastroController.js"></script>   
-      <script src="components/Autenticacao/controllers/trocarSenhaController.js"></script>    
+      <script src="components/Autenticacao/controllers/trocarSenhaController.js"></script> 
+      <script src="components/Autenticacao/controllers/esqueciSenhaController.js"></script>   
       <!-- <script src="js/angular/services/service.js"></script>
       <script src="js/angular/controllers/contatosCtrl.js"></script> -->
    </head>
@@ -62,6 +63,7 @@
             <ul class="right hide-on-med-and-down">
                <li><a href="#!login"style="color:#212121;">Entrar</a></li>
                <!-- <li><a href="#!trocarSenha"style="color:#212121;">trocar</a></li> -->
+               <li><a href="#!esqueciSenha"style="color:#212121;">esqueciSenha</a></li>
                <li><a href="#!cadastro"class="waves-effect waves-light btn green darken-2" >Cadastre-se</a></li>
             </ul>
 
