@@ -21,8 +21,12 @@ app.controller("trocarSenhaController", function($scope, $http, md5, $cookieStor
        // $scope.dados.password = "admin";
     
         $scope.submit = function(){
+
+            if(typeof $cookieStore.get('token') === 'undefined'){
+                Materialize.toast('Tá sem cookie.', 4000);                
+            }
             
-            token = $cookieStore.get('token');
+            token = md5.createHash($cookieStore.get('token'));
             
             AutenticacaoService.trocarSenha($scope.dados,token).then(function (response) {	
                 console.log('response->',response.data);		

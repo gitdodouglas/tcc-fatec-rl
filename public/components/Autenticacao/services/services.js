@@ -22,7 +22,8 @@ app.service('AutenticacaoService',
             });
         };
 
-        this.trocarSenha = function(dados){     
+        this.trocarSenha = function(dados,token){
+            dados.token = token;     
             return  $http({
                 method : "POST",
                 url : "cadastro",
