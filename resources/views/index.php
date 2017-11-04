@@ -57,7 +57,8 @@
    <body ng-app="appModule" class="grad" style="height:100%;" >
       <nav class="grey lighten-5" role="navigation">
          <div class="nav-wrapper container">
-            <a id="logo-container" style="color:#1a237e;" href="#" class="brand-logo">Logo</a>
+            <!-- <a id="logo-container" style="color:#1a237e;" href="#" class="brand-logo">Logo</a> -->
+            <a id="logo-container" href="#" class="brand-logo"><img style="width:150px;margin-top:17px;" src="images/logo3.jpg"></img></a>
             <ul class="right hide-on-med-and-down">
                <li><a href="#!login"style="color:#212121;">Entrar</a></li>
                <!-- <li><a href="#!trocarSenha"style="color:#212121;">trocar</a></li> -->
