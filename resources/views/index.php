@@ -63,19 +63,19 @@
             <ul class="right hide-on-med-and-down">
                <li><a href="#!login"style="color:#212121;">Entrar</a></li>
                <!-- <li><a href="#!trocarSenha"style="color:#212121;">trocar</a></li> -->
-               <li><a href="#!esqueciSenha"style="color:#212121;">esqueciSenha</a></li>
-               <li><a href="#!cadastro"class="waves-effect waves-light btn green darken-2" >Cadastre-se</a></li>
-            </ul>
+                <!--  <li><a href="#!esqueciSenha"style="color:#212121;">esqueciSenha</a></li> -->
+                <li><a href="#!cadastro"class="waves-effect waves-light btn green darken-2" >Cadastre-se</a></li>
+             </ul>
 
-            <ul id="nav-mobile" class="side-nav">
-               <li><a href="#!" style="color:#212121;">Início</a></li>
-               <li><a href="#!cadastro" style="color:#212121;">Cadastre-se</a></li>
-               <li><a href="#!login" style="color:#212121;">Entrar</a></li>
-            </ul>
-            <a href="" data-activates="nav-mobile" style="color:#212121;" class="button-collapse"><i class="material-icons">menu</i></a>
-         </div>
-      </nav>  
-      <ng-view>     
-      </ng-view>
-   </body>
-</html>
+             <ul id="nav-mobile" class="side-nav">
+                <li><a href="#!" style="color:#212121;">Início</a></li>
+                <li><a href="#!cadastro" style="color:#212121;">Cadastre-se</a></li>
+                <li><a href="#!login" style="color:#212121;">Entrar</a></li>
+             </ul>
+             <a href="" data-activates="nav-mobile" style="color:#212121;" class="button-collapse"><i class="material-icons">menu</i></a>
+          </div>
+       </nav>
+       <ng-view>
+       </ng-view>
+    </body>
+ </html>

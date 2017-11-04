@@ -2,7 +2,7 @@ app.controller("esqueciSenhaController", function($scope, $http, md5, $cookieSto
         
         $scope.dados = {};
         $scope.dados = {
-            'email' : '',
+            'email' : ''
         };
         
         //fundo branco f6f6f6, menu #7f93fb
@@ -13,18 +13,16 @@ app.controller("esqueciSenhaController", function($scope, $http, md5, $cookieSto
         };
     
         //$scope.limparDados();
-        //$scope.dados.email = "admin@admin.com";
-       // $scope.dados.password = "admin";
     
         $scope.submit = function(){
 
-            if(typeof $cookieStore.get('token') === 'undefined'){
-                Materialize.toast('Tá sem cookie.', 4000);                
-            }
+            //if(typeof $cookieStore.get('token') === 'undefined'){
+                //Materialize.toast('Tá sem cookie.', 4000);
+            //}
             
-            token = md5.createHash($cookieStore.get('token'));
+            //token = md5.createHash($cookieStore.get('token'));
             
-            AutenticacaoService.esqueciSenha($scope.dados,token).then(function (response) {	
+            AutenticacaoService.esqueciSenha($scope.dados).then(function (response) {
                 console.log('response->',response.data);		
                 if((response.status == 200) && (response.data)){
                     //console.log('response->',response.data);
@@ -36,9 +34,8 @@ app.controller("esqueciSenhaController", function($scope, $http, md5, $cookieSto
                     //     window.alert(response.data.mensagem);
                     // }
                     if (response.data.codigo == 'success') {
-                        var obj = response.data.objeto;
+                        //var obj = response.data.objeto;
                         // $cookieStore.put('token',(obj.info+obj.token));
-                        window.location.assign("/app");
                         //window.location.assign("/#!app");
                         // if(obj.codigo_tipo == 1){
                         //     $cookieStore.put('token',(response.data.token+obj.info));

@@ -40,7 +40,7 @@ Route::get('altera', 'AlteraController@index');
 Route::post('altera', 'AlteraController@verify')->name('altera');
 
 /* Recuperação da senha do usuário */
-Route::get('recupera', 'RecuperaController@index');
-Route::post('recupera', 'RecuperaController@reset')->name('recupera');
+Route::get('esqueci', 'RecuperaController@index');
+Route::post('esqueci', 'RecuperaController@reset')->name('esqueci');
 
 /*-----------------------------------------------------------------------*/

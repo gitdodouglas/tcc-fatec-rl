@@ -15,7 +15,7 @@ class LogoutController extends Controller
     public function index()
     {
         Auth::logout();
-        return redirect('/#/logout');
+        return redirect('/#!logout');
     }
 
     /**

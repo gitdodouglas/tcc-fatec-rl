@@ -34,11 +34,10 @@ app.service('AutenticacaoService',
             });
         };
 
-        this.esqueciSenha = function(dados,token){      
-            dados.token = token;     
+        this.esqueciSenha = function(dados){
             return  $http({
                 method : "POST",
-                url : "altera",
+                url : "esqueci",
                 headers : {
                     'Content-Type' : 'application/x-www-form-urlencoded'
                 },

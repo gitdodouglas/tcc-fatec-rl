@@ -12,10 +12,10 @@ app.config(function($routeProvider) {
     .when("/cadastro", {
         templateUrl : "components/Autenticacao/partials/tela-cadastro.html"
     })
-    .when("/trocarSenha", {
+    .when("/altera", {
         templateUrl : "components/Autenticacao/partials/tela-trocar-senha.html"
     })
-    .when("/esqueciSenha", {
+    .when("/esqueci", {
         templateUrl : "components/Autenticacao/partials/tela-esqueci-senha.html"
     })
     .otherwise({

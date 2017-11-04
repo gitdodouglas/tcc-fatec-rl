@@ -12,8 +12,8 @@ app.controller("loginController", function($scope, $http, md5, $cookieStore, Aut
         };
     
         //$scope.limparDados();
-        $scope.dados.email = "admin@admin.com";
-        $scope.dados.password = "admin";
+        //$scope.dados.email = "admin@admin.com";
+        //$scope.dados.password = "admin";
     
         $scope.submit = function(){
             
@@ -34,7 +34,7 @@ app.controller("loginController", function($scope, $http, md5, $cookieStore, Aut
                         //window.location.assign("/#!app");
                         if(obj.codigo_tipo == 1){
                             $cookieStore.put('token',(obj.info+obj.token));
-                            window.location.assign("/#!trocarSenha");
+                            window.location.assign("/#!altera");
                         }
                         if(obj.codigo_tipo == 0){
                             $cookieStore.put('token',(obj.info+obj.token));
