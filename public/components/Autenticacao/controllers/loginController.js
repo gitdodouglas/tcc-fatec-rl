@@ -1,6 +1,8 @@
-app.controller("loginController", function($scope,$http, AutenticacaoService){
+app.controller("loginController", function($scope, $http, md5, $cookieStore, AutenticacaoService){
         
-    //$scope.dados = {};
+        $scope.dados = {};
+
+        
 
         $scope.limparDados = function(){
             $scope.dados = {
@@ -10,6 +12,8 @@ app.controller("loginController", function($scope,$http, AutenticacaoService){
         };
     
         //$scope.limparDados();
+        $scope.dados.email = "admin@admin.com";
+        $scope.dados.password = "admin";
     
         $scope.submit = function(){
             
@@ -26,7 +30,12 @@ app.controller("loginController", function($scope,$http, AutenticacaoService){
                     //     window.alert(response.data.mensagem);
                     // }
                     if (response.data.codigo == 'success') {
-                        window.location.assign("/#!app");
+                        var obj = response.data.objeto;
+                        //window.location.assign("/#!app");
+                        if(obj.codigo_tipo == 1){
+                            $cookieStore.put('token',(response.data.token+obj.info));
+                        }
+
                     }
                     Materialize.toast(response.data.mensagem, 4000);				
                 }else{

@@ -9,10 +9,16 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
       <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+      <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
       <script src="js/jquery.min.js"></script>
       <script src="js/materialize.min.js"></script>
-      <script src="js/init.js"></script>
+      <script src="js/init.js"></script>      
       <style>
+        @media only screen and (min-width : 992px) {
+            #titleHead{
+                float: left;
+            }    
+        }
          #toast-container {
             top: auto !important;
             right: auto !important;
@@ -37,11 +43,14 @@
       </style>
       <script src="js/angular.min.js"></script>
       <script src="js/routes.js"></script>
+      <script src="js/angular-md5.js"></script>
+      <script src="js/angular-cookies.min.js"></script>
       <script src="app.module.js"></script>
       <script src="app.routes.js"></script>
       <script src="components/Autenticacao/services/services.js"></script>
       <script src="components/Autenticacao/controllers/loginController.js"></script> 
-      <script src="components/Autenticacao/controllers/cadastroController.js"></script>    
+      <script src="components/Autenticacao/controllers/cadastroController.js"></script>   
+      <script src="components/Autenticacao/controllers/trocarSenhaController.js"></script>    
       <!-- <script src="js/angular/services/service.js"></script>
       <script src="js/angular/controllers/contatosCtrl.js"></script> -->
    </head>
@@ -51,10 +60,11 @@
             <a id="logo-container" style="color:#1a237e;" href="#" class="brand-logo">Logo</a>
             <ul class="right hide-on-med-and-down">
                <li><a href="#!login"style="color:#212121;">Entrar</a></li>
-               <li><a href="#!cadastro"class="waves-effect waves-light btn green darken-1" >Cadastre-se</a></li>
+               <li><a href="#!trocarSenha"style="color:#212121;">trocar</a></li>
+               <li><a href="#!cadastro"class="waves-effect waves-light btn green darken-2" >Cadastre-se</a></li>
             </ul>
 
-               <ul id="nav-mobile" class="side-nav">
+            <ul id="nav-mobile" class="side-nav">
                <li><a href="#!" style="color:#212121;">Início</a></li>
                <li><a href="#!cadastro" style="color:#212121;">Cadastre-se</a></li>
                <li><a href="#!login" style="color:#212121;">Entrar</a></li>

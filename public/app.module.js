@@ -1,1 +1,1 @@
-var app = angular.module("appModule",["ngRoute"]);
+var app = angular.module("appModule",["ngRoute","angular-md5","ngCookies"]);
