@@ -3,7 +3,7 @@ app.controller("cadastroController", function($scope, $http, $cookieStore, Auten
         $scope.dados = {};
         
 
-        $scope.dados.email = $cookieStore.get('email');
+        //$scope.dados.email = $cookieStore.get('email');
 
             //Materialize.toast("Ta logado ainda"+$cookieStore.get('token'), 4000);
         
@@ -20,9 +20,9 @@ app.controller("cadastroController", function($scope, $http, $cookieStore, Auten
                 // An error has occurred
             });
 
-        if(typeof $cookieStore.get('token') === 'undefined'){
-            Materialize.toast("Ta vazio", 4000);
-        }
+        //if(typeof $cookieStore.get('token') === 'undefined'){
+            //Materialize.toast("Ta vazio", 4000);
+        //}
         $scope.limparDados = function(){
             $scope.dados = {
                 'name' : '',
@@ -35,24 +35,29 @@ app.controller("cadastroController", function($scope, $http, $cookieStore, Auten
         //$scope.limparDados();
     
         $scope.submit = function(){
-            
-            
-            AutenticacaoService.cadastrar($scope.dados).then(function (response) {	
-                console.log('response->',response.data);
-                if((response.status == 200) && (response.data)){
-                    //console.log('response->',response.data);
-                    // if(response.data.codigo == 'success'){
-                    //     $scope.limparDados();
-                    //     window.alert(response.data.mensagem);
-                    // }
-                    // if(response.data.codigo == 'error'){					
-                    //     window.alert(response.data.mensagem);
-                    // }	
-                    Materialize.toast(response.data.mensagem, 4000);				
-                }else{
-                    Materialize.toast('Desculpe, não foi possível realizar o seu cadastro neste momento.', 4000);
-                }
-            });
+
+            if (!$scope.dados.name || !$scope.dados.nickname || !$scope.dados.birth || !$scope.dados.email) {
+                Materialize.toast('Todos os campos são de preenchimento obrigatório.', 4000);
+            } else {
+
+                AutenticacaoService.cadastrar($scope.dados).then(function (response) {
+                    console.log('response->',response.data);
+                    if((response.status == 200) && (response.data)){
+                        //console.log('response->',response.data);
+                        // if(response.data.codigo == 'success'){
+                        //     $scope.limparDados();
+                        //     window.alert(response.data.mensagem);
+                        // }
+                        // if(response.data.codigo == 'error'){
+                        //     window.alert(response.data.mensagem);
+                        // }
+                        Materialize.toast(response.data.mensagem, 4000);
+                    }else{
+                        Materialize.toast('Desculpe, não foi possível realizar o seu cadastro neste momento.', 4000);
+                    }
+                });
+
+            }
         
         };
     

@@ -28,20 +28,20 @@
                             <h5>Cadastre-se e aprenda o melhor do melhor.</h5>
                         </div>
                         <div class="input-field col s12">
-                            <input id="txtName" type="text" name="nome" ng-model="dados.name" class="validate">
                             <label for="txtName">Nome completo</label>
+                            <input id="txtName" type="text" name="nome" ng-model="dados.name" class="validate" required>
                         </div>
                         <div class="input-field col s12">
-                            <input id="txtNickname" type="text" name="usuario" ng-model="dados.nickname" class="validate">
                             <label for="txtNickname">Nome de usuário</label>
+                            <input id="txtNickname" type="text" name="usuario" ng-model="dados.nickname" class="validate" required>
                         </div>
                         <div class="input-field col s12">
-                            <input id="txtBirth" type="text" name="nascimento" ng-model="dados.birth" class="validate">
                             <label for="txtBirth">Data de nascimento</label>
+                            <input id="txtBirth" type="text" name="nascimento" ng-model="dados.birth" mask="39/19/2999" restrict="reject" class="validate" required>
                         </div>
                         <div class="input-field col s12">
-                            <input id="txtEmail" type="email" name="email" ng-model="dados.email" class="validate">
                             <label for="txtEmail">E-mail de contato</label>
+                            <input id="txtEmail" type="email" name="email" ng-model="dados.email" class="validate" required>
                         </div>
                         <div class="col s12" style="margin-top: 20px;">
                             <button class="waves-effect waves-light btn  green darken-2" type="button" ng-click="submit()" >CADASTRAR</button>

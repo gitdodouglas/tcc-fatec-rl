@@ -2,8 +2,8 @@ app.service('AutenticacaoService',
     function($http){
         this.logar = function(dados){
             return  $http({
-                method : "POST",
-                url : "login",
+                method : 'POST',
+                url : 'login',
                 headers : {
                     'Content-Type' : 'application/x-www-form-urlencoded'
                 },
@@ -11,10 +11,10 @@ app.service('AutenticacaoService',
             });
         };
 
-        this.cadastrar = function(dados){   
+        this.cadastrar = function(dados){
             return  $http({
-                method : "POST",
-                url : "cadastro",
+                method : 'POST',
+                url : 'cadastro',
                 headers : {
                     'Content-Type' : 'application/x-www-form-urlencoded'
                 },
@@ -22,11 +22,12 @@ app.service('AutenticacaoService',
             });
         };
 
-        this.trocarSenha = function(dados,token){            
+        this.trocarSenha = function(dados,token){
+            //console.log('request->', dados);
             dados.token = token;     
             return  $http({
-                method : "POST",
-                url : "altera",
+                method : 'POST',
+                url : 'altera',
                 headers : {
                     'Content-Type' : 'application/x-www-form-urlencoded'
                 },
@@ -36,8 +37,8 @@ app.service('AutenticacaoService',
 
         this.esqueciSenha = function(dados){
             return  $http({
-                method : "POST",
-                url : "esqueci",
+                method : 'POST',
+                url : 'esqueci',
                 headers : {
                     'Content-Type' : 'application/x-www-form-urlencoded'
                 },
@@ -47,4 +48,3 @@ app.service('AutenticacaoService',
 
     }
 );
-

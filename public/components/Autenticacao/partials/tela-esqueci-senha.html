@@ -23,8 +23,8 @@
                 <div class="section">
                     <form  class="col s12 card-panel hoverable" name="frmLogin" style="background:#ffffff; padding:20px 40px 40px 40px;">                        
                         <div class="input-field col s12">
-                            <input id="txtEmail" type="email" name="txtEmail" ng-model="dados.email" class="validate">
                             <label for="txtEmail">Digite seu e-mail</label>
+                            <input id="txtEmail" type="email" name="txtEmail" ng-model="dados.email" class="validate" required>
                         </div>                                        
                         <div class="col s12" style="margin-top: 20px;">
                             <button class="waves-effect waves-light btn  orange darken-2" type="button" ng-click="submit()" >Enviar</button>
