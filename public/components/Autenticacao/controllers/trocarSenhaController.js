@@ -31,7 +31,7 @@ app.controller("trocarSenhaController", function($scope, $http, md5, $cookieStor
                 } else {
 
                     if ($scope.dados.new_password != $scope.dados.confirm_password) {
-                        Materialize.toast('A senhas digitadas não conferem.', 4000);
+                        Materialize.toast('A senhas digitadas não coincidem.', 4000);
                     } else {
 
                         //if(typeof $cookieStore.get('token') === 'undefined'){

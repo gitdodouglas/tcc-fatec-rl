@@ -49,7 +49,7 @@
       <script src="app.module.js"></script>
       <script src="app.routes.js"></script>
       <script src="components/Autenticacao/services/services.js"></script>
-       <script src="components/Autenticacao/directives/directives.js"></script>
+      <script src="components/Autenticacao/directives/directives.js"></script>
       <script src="components/Autenticacao/controllers/loginController.js"></script> 
       <script src="components/Autenticacao/controllers/cadastroController.js"></script>   
       <script src="components/Autenticacao/controllers/trocarSenhaController.js"></script> 

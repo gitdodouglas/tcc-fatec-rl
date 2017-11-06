@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
                   ->references('id')->on('type_users')
                   ->onDelete('cascade');
             $table->timestamps();
+            $table->timestamp('activated_at')->nullable();
         });
     }
 

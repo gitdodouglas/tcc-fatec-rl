@@ -40,7 +40,7 @@ class AlteraController extends Controller
 
                     /* Verifica se a senha digitada é igual a confirmação da senha */
                     if ($request->json('new_password') != $request->json('confirm_password')) {
-                        throw new \Exception('A senhas digitadas não conferem.');
+                        throw new \Exception('A senhas digitadas não coincidem.');
                     } else {
 
                         /* Instancia o controller de usuário */
@@ -55,6 +55,12 @@ class AlteraController extends Controller
                             /* Atualiza a senha do usuário */
                             $user->password = bcrypt($request->json('new_password'));
                             $user->save();
+
+                            /* Insere a data de ativação do cadastro */
+                            if (!$user->activated_at) {
+                                $user->activated_at = $user->updated_at;
+                                $user->save();
+                            }
 
                             /* Realiza a tentativa de login usando o e-mail e senha informados */
                             if (Auth::attempt(['email' => session()->get('$_EMAIL'), 'password' => $request->json('new_password')])) {

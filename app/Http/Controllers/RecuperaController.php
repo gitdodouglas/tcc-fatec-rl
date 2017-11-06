@@ -44,16 +44,20 @@ class RecuperaController extends Controller
                 $user->password = bcrypt($pass);
                 $user->save();
 
+                /* Restaura a data de atualização */
+                $user->updated_at = $user->created_at;
+                $user->save();
+
                 /* Envia o e-mail */
                 //$this->sendEmail($user->email, $pass);
 
                 return [
                     'codigo' => 'success',
                     'objeto' => null,
-                    'mensagem' => "Enviamos uma nova senha para $user->email.",
+                    'mensagem' => "Enviamos uma mensagem para $user->email para a recuperação de senha.",
                 ];
             } else {
-                throw new \Exception('E-mail não encontrado.');
+                throw new \Exception('Cadastro não encontrado.');
             }
         } catch (\Exception $exception) {
             return [

@@ -57,7 +57,7 @@ class LoginController extends Controller
                             'info' => $user->email,
                             'token' => $token,
                         ],
-                        'mensagem' => 'É necessário que altere a sua senha antes de efetuar o login pela primeira vez.',
+                        'mensagem' => 'Pedimos que altere a sua senha antes de efetuar o login.',
                     ];
                 } else {
                     /* Realiza a tentativa de login usando o e-mail e senha informados */
