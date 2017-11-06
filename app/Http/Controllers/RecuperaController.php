@@ -54,7 +54,7 @@ class RecuperaController extends Controller
                 return [
                     'codigo' => 'success',
                     'objeto' => null,
-                    'mensagem' => "Enviamos uma mensagem para $user->email para a recuperação de senha.",
+                    'mensagem' => 'Enviamos um e-mail com instruções para a criação de uma nova senha.',
                 ];
             } else {
                 throw new \Exception('Cadastro não encontrado.');

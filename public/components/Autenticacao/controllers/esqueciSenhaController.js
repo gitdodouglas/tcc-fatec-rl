@@ -29,7 +29,7 @@ app.controller("esqueciSenhaController", function($scope, $http, md5, $cookieSto
                 //token = md5.createHash($cookieStore.get('token'));
 
                 AutenticacaoService.esqueciSenha($scope.dados).then(function (response) {
-                    console.log('response->',response.data);
+                    //console.log('response->',response.data);
                     if((response.status == 200) && (response.data)){
                         //console.log('response->',response.data);
                         // if(response.data.codigo == 'success'){

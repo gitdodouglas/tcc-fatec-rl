@@ -51,7 +51,7 @@ class CadastroController extends Controller
             return [
                 'codigo' => 'success',
                 'objeto' => null,
-                'mensagem' => "Enviamos uma mensagem para $user->email para confirmar o seu cadastro.",
+                'mensagem' => 'Enviamos um e-mail com instruções para a confirmação do cadastro.',
             ];
         } catch (\Exception $exception) {
             return [

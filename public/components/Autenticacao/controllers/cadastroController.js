@@ -43,7 +43,7 @@ app.controller("cadastroController", function($scope, $http, $cookieStore, Auten
                 Materialize.toast('Estamos processando o seu cadastro.', 4000);
 
                 AutenticacaoService.cadastrar($scope.dados).then(function (response) {
-                    console.log('response->',response.data);
+                    //console.log('response->',response.data);
                     if((response.status == 200) && (response.data)){
                         //console.log('response->',response.data);
                         if(response.data.codigo == 'success'){

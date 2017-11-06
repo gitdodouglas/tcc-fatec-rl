@@ -22,7 +22,7 @@ app.controller("loginController", function($scope, $http, md5, $cookieStore, Aut
             } else {
 
                 AutenticacaoService.logar($scope.dados).then(function (response) {
-                    console.log('response->',response.data);
+                    //console.log('response->',response.data);
                     if((response.status == 200) && (response.data)){
                         //console.log('response->',response.data);
                         // if(response.data.codigo == 'success'){
