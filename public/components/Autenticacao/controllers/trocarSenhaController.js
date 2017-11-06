@@ -31,7 +31,7 @@ app.controller("trocarSenhaController", function($scope, $http, md5, $cookieStor
                 } else {
 
                     if ($scope.dados.new_password != $scope.dados.confirm_password) {
-                        Materialize.toast('A senhas digitadas não coincidem.', 4000);
+                        Materialize.toast('A senhas digitadas não correspondem.', 4000);
                     } else {
 
                         //if(typeof $cookieStore.get('token') === 'undefined'){
@@ -62,7 +62,7 @@ app.controller("trocarSenhaController", function($scope, $http, md5, $cookieStor
                                 }
                                 Materialize.toast(response.data.mensagem, 4000);
                             }else{
-                                Materialize.toast('Desculpe, não foi possível realizar a troca de senha neste momento.', 4000);
+                                Materialize.toast('Desculpe, não foi possível realizar a alteração de senha neste momento.', 4000);
                             }
                         });
 

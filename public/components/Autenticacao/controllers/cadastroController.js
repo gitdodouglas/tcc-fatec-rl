@@ -40,20 +40,21 @@ app.controller("cadastroController", function($scope, $http, $cookieStore, Auten
                 Materialize.toast('Todos os campos são de preenchimento obrigatório.', 4000);
             } else {
 
+                Materialize.toast('Estamos processando o seu cadastro.', 4000);
+
                 AutenticacaoService.cadastrar($scope.dados).then(function (response) {
                     console.log('response->',response.data);
                     if((response.status == 200) && (response.data)){
                         //console.log('response->',response.data);
-                        // if(response.data.codigo == 'success'){
-                        //     $scope.limparDados();
-                        //     window.alert(response.data.mensagem);
-                        // }
+                        if(response.data.codigo == 'success'){
+                            $scope.limparDados();
+                        }
                         // if(response.data.codigo == 'error'){
                         //     window.alert(response.data.mensagem);
                         // }
                         Materialize.toast(response.data.mensagem, 4000);
                     }else{
-                        Materialize.toast('Desculpe, não foi possível realizar o seu cadastro neste momento.', 4000);
+                        Materialize.toast('Desculpe, não foi possível realizar o cadastro neste momento.', 4000);
                     }
                 });
 

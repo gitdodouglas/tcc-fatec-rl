@@ -40,7 +40,7 @@ class AlteraController extends Controller
 
                     /* Verifica se a senha digitada é igual a confirmação da senha */
                     if ($request->json('new_password') != $request->json('confirm_password')) {
-                        throw new \Exception('A senhas digitadas não coincidem.');
+                        throw new \Exception('A senhas digitadas não correspondem.');
                     } else {
 
                         /* Instancia o controller de usuário */

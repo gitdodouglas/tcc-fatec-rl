@@ -19,7 +19,7 @@ app.config(function($routeProvider) {
         templateUrl : "components/Autenticacao/partials/tela-esqueci-senha.html"
     })
     .otherwise({
-        template : "<h1>Main</h1><p>Click on the links to change this content</p>"
+        template : "<h1>404</h1><p>Page not found.</p>"
     });
 
 });

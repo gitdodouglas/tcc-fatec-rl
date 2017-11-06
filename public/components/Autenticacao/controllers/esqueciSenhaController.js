@@ -20,6 +20,8 @@ app.controller("esqueciSenhaController", function($scope, $http, md5, $cookieSto
                 Materialize.toast('Campo de preenchimento obrigatório.', 4000);
             } else {
 
+                Materialize.toast('Estamos processando o seu pedido.', 4000);
+
                 //if(typeof $cookieStore.get('token') === 'undefined'){
                 //Materialize.toast('Tá sem cookie.', 4000);
                 //}
@@ -38,6 +40,7 @@ app.controller("esqueciSenhaController", function($scope, $http, md5, $cookieSto
                         //     window.alert(response.data.mensagem);
                         // }
                         if (response.data.codigo == 'success') {
+                            $scope.limparDados();
                             //var obj = response.data.objeto;
                             // $cookieStore.put('token',(obj.info+obj.token));
                             //window.location.assign("/#!app");
@@ -47,7 +50,7 @@ app.controller("esqueciSenhaController", function($scope, $http, md5, $cookieSto
                         }
                         Materialize.toast(response.data.mensagem, 4000);
                     }else{
-                        Materialize.toast('Desculpe, não foi possível realizar a troca de senha neste momento.', 4000);
+                        Materialize.toast('Desculpe, não foi possível realizar a redefinição de senha neste momento.', 4000);
                     }
                 });
 

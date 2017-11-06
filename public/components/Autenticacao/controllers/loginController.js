@@ -47,7 +47,7 @@ app.controller("loginController", function($scope, $http, md5, $cookieStore, Aut
                         }
                         Materialize.toast(response.data.mensagem, 4000);
                     }else{
-                        Materialize.toast('Desculpe, não foi possível realizar o seu login neste momento.', 4000);
+                        Materialize.toast('Desculpe, não foi possível realizar o login neste momento.', 4000);
                     }
                 });
 
