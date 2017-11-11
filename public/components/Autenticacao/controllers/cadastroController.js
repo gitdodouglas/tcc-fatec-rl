@@ -1,24 +1,11 @@
-app.controller("cadastroController", function($scope, $http, $cookieStore, AutenticacaoService, $templateRequest, $sce, $compile){	
-        
-        $scope.dados = {};
-        
+app.controller("cadastroController", function($scope, $http, $cookieStore, AutenticacaoService, $compile){	
+        $('.button-collapse').sideNav('hide');
+        $scope.dados = {};   
 
-        //$scope.dados.email = $cookieStore.get('email');
-
-            //Materialize.toast("Ta logado ainda"+$cookieStore.get('token'), 4000);
-        
-            var templateUrl = $sce.getTrustedResourceUrl('components/Autenticacao/partials/tela-login.html');
-            
-            $templateRequest(templateUrl).then(function(template) {
-                // template is the HTML template as a string
-        
-                // Let's put it into an HTML element and parse any directives and expressions
-                // in the code. (Note: This is just an example, modifying the DOM from within
-                // a controller is considered bad style.)
-                $compile($("#myelement").html(template).contents())($scope);
-            }, function() {
-                // An error has occurred
-            });
+           
+        AutenticacaoService.colocarMenu('outside').then(function (response) {          
+            $compile($("#menu").html(response).contents())($scope);           
+        });
 
         //if(typeof $cookieStore.get('token') === 'undefined'){
             //Materialize.toast("Ta vazio", 4000);

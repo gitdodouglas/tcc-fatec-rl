@@ -1,31 +1,44 @@
-app.controller("loginController", function($scope, $http, md5, $cookieStore, AutenticacaoService, $compile){
+app.controller("homeController", function($scope, $http, $cookieStore, AutenticacaoService, $compile){	
         $('.button-collapse').sideNav('hide');
-        $scope.dados = {};
-        console.log('oioiiioioo');
+        $scope.dados = {};   
 
-        AutenticacaoService.colocarMenu('outside').then(function (response) {          
+           
+        AutenticacaoService.colocarMenu('inside').then(function (response) {          
             $compile($("#menu").html(response).contents())($scope);           
         });
 
+        $('.dropdown-button').dropdown({
+            belowOrigin: true, 
+            alignment: 'left', 
+            inDuration: 500,
+            outDuration: 300,
+            constrain_width: true,
+            hover: false, 
+            gutter: 1
+          });
+
+        //if(typeof $cookieStore.get('token') === 'undefined'){
+            //Materialize.toast("Ta vazio", 4000);
+        //}
         $scope.limparDados = function(){
             $scope.dados = {
-                'email' : '',
-                'password' : ''
+                'name' : '',
+                'nickname' : '',
+                'birth' : '',
+                'email' : ''
             };
         };
     
         //$scope.limparDados();
-        //$scope.dados.email = "admin@admin.com";
-        //$scope.dados.password = "admin";
     
         $scope.submit = function(){
 
-            if (!$scope.dados.email || !$scope.dados.password) {
+            if (!$scope.dados.name || !$scope.dados.nickname || !$scope.dados.birth || !$scope.dados.email) {
                 Materialize.toast('Todos os campos são de preenchimento obrigatório.', 4000);
             } else {
 
-                AutenticacaoService.logar($scope.dados).then(function (response) {
-                    //console.log('response->',response.data);
+                AutenticacaoService.cadastrar($scope.dados).then(function (response) {
+                    console.log('response->',response.data);
                     if((response.status == 200) && (response.data)){
                         //console.log('response->',response.data);
                         // if(response.data.codigo == 'success'){
@@ -35,22 +48,9 @@ app.controller("loginController", function($scope, $http, md5, $cookieStore, Aut
                         // if(response.data.codigo == 'error'){
                         //     window.alert(response.data.mensagem);
                         // }
-                        if (response.data.codigo == 'success') {
-                            var obj = response.data.objeto;
-                            //window.location.assign("/#!app");
-                            if(obj.codigo_tipo == 1){
-                                $cookieStore.put('token',(obj.info+obj.token));
-                                window.location.assign("/#!altera");
-                            }
-                            if(obj.codigo_tipo == 0){
-                                $cookieStore.put('token',(obj.info+obj.token));
-                                window.location.assign("/app");
-                            }
-
-                        }
-                        
+                        Materialize.toast(response.data.mensagem, 4000);
                     }else{
-                        Materialize.toast('Desculpe, não foi possível realizar o login neste momento.', 4000);
+                        Materialize.toast('Desculpe, não foi possível realizar o seu cadastro neste momento.', 4000);
                     }
                 });
 

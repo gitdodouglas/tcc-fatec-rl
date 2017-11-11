@@ -4,20 +4,41 @@
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
       <title>YOUPIE</title>
-
+       
       <!-- CSS  -->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
       <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
       <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+
       <script src="js/jquery.min.js"></script>
       <script src="js/materialize.min.js"></script>
-      <script src="js/init.js"></script>      
+      
+          
       <style>
+        .btnContentDiv{
+            text-align: center;
+        }
+        
+        @media only screen and (max-width: 370px){
+            .spanTopico{
+                display: block;
+                margin-left: -10px;
+                margin-top: 5px;
+            }
+        }
         @media only screen and (min-width : 992px) {
             #titleHead{
                 float: left;
             }    
+            .btnContentL{
+               
+                float: left;
+            }
+            .btnContentR{
+              
+                float: right;
+            }
         }
          #toast-container {
             top: auto !important;
@@ -40,9 +61,17 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
+
+    .divRadius{
+        
+        border-radius: 100%;
+    }
+
       </style>
       <script src="js/angular.min.js"></script>
       <script src="js/routes.js"></script>
+      <script src="js/angular-materialize.min.js"></script>
       <script src="js/angular-md5.js"></script>
       <script src="js/angular-cookies.min.js"></script>
       <script src="js/ngMask.js"></script>
@@ -54,30 +83,16 @@
       <script src="components/Autenticacao/controllers/cadastroController.js"></script>   
       <script src="components/Autenticacao/controllers/trocarSenhaController.js"></script> 
       <script src="components/Autenticacao/controllers/esqueciSenhaController.js"></script>
+      <script src="components/SistemaUsuario/controllers/homeController.js"></script>
       <!-- <script src="js/angular/services/service.js"></script>
       <script src="js/angular/controllers/contatosCtrl.js"></script> -->
    </head>
    <body ng-app="appModule" class="grad" style="height:100%;" >
-      <nav class="grey lighten-5" role="navigation">
-         <div class="nav-wrapper container">
-            <!-- <a id="logo-container" style="color:#1a237e;" href="#" class="brand-logo">Logo</a> -->
-            <a id="logo-container" href="#" class="brand-logo"><img style="width:150px;margin-top:17px;" src="images/logo3.jpg"></img></a>
-            <ul class="right hide-on-med-and-down">
-               <li><a href="#!login"style="color:#212121;">Entrar</a></li>
-               <!-- <li><a href="#!trocarSenha"style="color:#212121;">trocar</a></li> -->
-                <!--  <li><a href="#!esqueciSenha"style="color:#212121;">esqueciSenha</a></li> -->
-                <li><a href="#!cadastro"class="waves-effect waves-light btn green darken-2" >Cadastre-se</a></li>
-             </ul>
+        
 
-             <ul id="nav-mobile" class="side-nav">
-                <li><a href="#!" style="color:#212121;">Início</a></li>
-                <li><a href="#!cadastro" style="color:#212121;">Cadastre-se</a></li>
-                <li><a href="#!login" style="color:#212121;">Entrar</a></li>
-             </ul>
-             <a href="" data-activates="nav-mobile" style="color:#212121;" class="button-collapse"><i class="material-icons">menu</i></a>
-          </div>
-       </nav>
-       <ng-view>
-       </ng-view>
+        <ng-view></ng-view>
     </body>
- </html>
+
+    
+      
+</html>

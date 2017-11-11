@@ -1,6 +1,12 @@
-app.controller("esqueciSenhaController", function($scope, $http, md5, $cookieStore, AutenticacaoService){
-        
+app.controller("esqueciSenhaController", function($scope, $http, md5, $cookieStore, AutenticacaoService, $compile){
+        $('.button-collapse').sideNav('hide');
         $scope.dados = {};
+        
+        AutenticacaoService.colocarMenu('outside').then(function (response) {  
+                   
+            $compile($("#menu").html(response).contents())($scope);           
+        });
+
         $scope.dados = {
             'email' : ''
         };
@@ -15,6 +21,7 @@ app.controller("esqueciSenhaController", function($scope, $http, md5, $cookieSto
         //$scope.limparDados();
     
         $scope.submit = function(){
+            
 
             if (!$scope.dados.email) {
                 Materialize.toast('Campo de preenchimento obrigatório.', 4000);

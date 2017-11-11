@@ -1,5 +1,5 @@
 app.service('AutenticacaoService', 
-    function($http){
+    function($http, $templateRequest, $sce){
         this.logar = function(dados){
             return  $http({
                 method : 'POST',
@@ -33,6 +33,18 @@ app.service('AutenticacaoService',
                 },
                 data : dados
             });
+        };
+
+        this.colocarMenu = function(opcao){
+            var templateUrl = '';
+            if(opcao == 'outside'){
+                templateUrl = $sce.getTrustedResourceUrl('components/Menus/partials/outside-menu.html');
+
+            }else{
+                templateUrl = $sce.getTrustedResourceUrl('components/Menus/partials/inside-menu.html');
+            }          
+            
+            return $templateRequest(templateUrl);
         };
 
         this.esqueciSenha = function(dados){

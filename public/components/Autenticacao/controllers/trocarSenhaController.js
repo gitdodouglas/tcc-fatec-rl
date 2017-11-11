@@ -1,6 +1,12 @@
-app.controller("trocarSenhaController", function($scope, $http, md5, $cookieStore, AutenticacaoService){
-        
+app.controller("trocarSenhaController", function($scope, $http, md5, $cookieStore, AutenticacaoService, $compile){
+        $('.button-collapse').sideNav('hide');
         $scope.dados = {};
+
+        AutenticacaoService.colocarMenu('outside').then(function (response) {  
+              
+            $compile($("#menu").html(response).contents())($scope);           
+        });
+        
         $scope.dados = {
             'old_password' : '',
             'new_password' : '',

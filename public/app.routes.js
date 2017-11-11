@@ -4,7 +4,7 @@ app.config(function($routeProvider) {
         template : "<h1>Main</h1><p>Click on the links to change this content</p>"
     })
     .when("/principal", {
-        templateUrl : "components/Autenticacao/partials/tela-inicial.html"
+        templateUrl : "components/SistemaUsuario/partials/tela-home.html"
     })
     .when("/login", {
         templateUrl : "components/Autenticacao/partials/tela-login.html"
@@ -17,6 +17,15 @@ app.config(function($routeProvider) {
     })
     .when("/esqueci", {
         templateUrl : "components/Autenticacao/partials/tela-esqueci-senha.html"
+    })
+    .when("/topicos", {
+        templateUrl : "components/SistemaUsuario/partials/tela-topicos.html"
+    })
+    .when("/conteudo", {
+        templateUrl : "components/SistemaUsuario/partials/tela-conteudo.html"
+    })
+    .when("/questoes", {
+        templateUrl : "components/SistemaUsuario/partials/tela-questao.html"
     })
     .otherwise({
         template : "<h1>404</h1><p>Page not found.</p>"
