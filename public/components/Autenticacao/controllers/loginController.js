@@ -1,7 +1,7 @@
 app.controller("loginController", function($scope, $http, md5, $cookieStore, AutenticacaoService, $compile){
         $('.button-collapse').sideNav('hide');
         $scope.dados = {};
-        console.log('oioiiioioo');
+        //console.log('oioiiioioo');
 
         AutenticacaoService.colocarMenu('outside').then(function (response) {          
             $compile($("#menu").html(response).contents())($scope);           
@@ -15,8 +15,8 @@ app.controller("loginController", function($scope, $http, md5, $cookieStore, Aut
         };
     
         //$scope.limparDados();
-        //$scope.dados.email = "admin@admin.com";
-        //$scope.dados.password = "admin";
+        $scope.dados.email = "admin@admin.com";
+        $scope.dados.password = "admin";
     
         $scope.submit = function(){
 
@@ -44,11 +44,11 @@ app.controller("loginController", function($scope, $http, md5, $cookieStore, Aut
                             }
                             if(obj.codigo_tipo == 0){
                                 $cookieStore.put('token',(obj.info+obj.token));
-                                window.location.assign("/app");
+                                window.location.assign("/#!principal");
                             }
 
                         }
-                        
+                        Materialize.toast(response.data.mensagem, 4000);
                     }else{
                         Materialize.toast('Desculpe, não foi possível realizar o login neste momento.', 4000);
                     }

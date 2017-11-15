@@ -4,7 +4,7 @@
     $('.button-collapse').sideNav();
 
     $('.dropdown-button').dropdown({
-      belowOrigin: true, 
+      belowOrigin: true,
       alignment: 'left', 
       inDuration: 500,
       outDuration: 300,

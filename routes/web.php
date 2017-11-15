@@ -17,9 +17,6 @@
 |--------------------------------------------------------------------------
  */
 
-/* Rota de teste - Requer autenticação para acessar */
-Route::get('/app', 'AppController@index');
-
 /* Página inicial */
 Route::get('/', 'HomeController@index')->name('home');
 
@@ -42,5 +39,22 @@ Route::post('altera', 'AlteraController@verify')->name('altera');
 /* Recuperação da senha do usuário */
 Route::get('esqueci', 'RecuperaController@index');
 Route::post('esqueci', 'RecuperaController@reset')->name('esqueci');
+
+/*-----------------------------------------------------------------------*/
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Rotas do módulo de aplicação
+|--------------------------------------------------------------------------
+ */
+
+/* Debug */
+Route::get('/debug', 'NivelController@level');
+
+/* Níveis */
+Route::get('/principal', 'NivelController@index');
+Route::post('/principal', 'NivelController@level');
 
 /*-----------------------------------------------------------------------*/
