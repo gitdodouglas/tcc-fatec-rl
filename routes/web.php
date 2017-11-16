@@ -51,10 +51,14 @@ Route::post('esqueci', 'RecuperaController@reset')->name('esqueci');
  */
 
 /* Debug */
-Route::get('/debug', 'NivelController@level');
+Route::get('/debug', 'TopicoController@topic');
 
 /* Níveis */
 Route::get('/principal', 'NivelController@index');
 Route::post('/principal', 'NivelController@level');
+
+/* Tópicos */
+Route::get('/topicos', 'TopicoController@index');
+Route::post('/topicos', 'TopicoController@topic');
 
 /*-----------------------------------------------------------------------*/

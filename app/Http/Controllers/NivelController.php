@@ -13,7 +13,7 @@ class NivelController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -27,6 +27,12 @@ class NivelController extends Controller
         return redirect('/#!principal');
     }
 
+    /**
+     * Função que inicializa a página de níveis
+     *
+     * @param Request $request
+     * @return array
+     */
     public function level(Request $request)
     {
         try {
