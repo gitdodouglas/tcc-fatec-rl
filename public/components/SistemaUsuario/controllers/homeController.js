@@ -1,9 +1,16 @@
-app.controller("homeController", function($scope, $http, $cookieStore, AutenticacaoService, $compile){	
+app.controller("homeController", function($scope, $http, $cookieStore, AutenticacaoService, $compile, $stateParams, $state){	
         $('.button-collapse').sideNav('hide');
-        $scope.dados = {};   
+        $scope.dados = {
+            'nome':'Skywalker'
+        };   
+        //$state.go('cadastro');
+        console.log('state->',$stateParams);
+
+        
 
            
-        AutenticacaoService.colocarMenu('inside').then(function (response) {          
+        AutenticacaoService.colocarMenu('inside').then(function (response) {   
+            console.log('oioiooi');       
             $compile($("#menu").html(response).contents())($scope);           
         });
 

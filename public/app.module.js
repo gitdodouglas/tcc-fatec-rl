@@ -1,1 +1,4 @@
-var app = angular.module("appModule",["ngRoute","angular-md5","ngCookies","ngMask"]);
+
+
+var app = angular.module('appModule', ['ui.router','angular-md5','ngCookies','ngMask']);
+

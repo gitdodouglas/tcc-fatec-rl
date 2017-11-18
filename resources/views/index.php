@@ -69,9 +69,10 @@
     }
 
       </style>
-      <script src="js/angular.min.js"></script>
-      <script src="js/routes.js"></script>
-      <script src="js/angular-materialize.min.js"></script>
+       <script src="js/angular.min.js"></script>
+       <script src="js/angular-ui-router.min.js"></script>
+       
+     
       <script src="js/angular-md5.js"></script>
       <script src="js/angular-cookies.min.js"></script>
       <script src="js/ngMask.js"></script>
@@ -84,13 +85,15 @@
       <script src="components/Autenticacao/controllers/trocarSenhaController.js"></script> 
       <script src="components/Autenticacao/controllers/esqueciSenhaController.js"></script>
       <script src="components/SistemaUsuario/controllers/homeController.js"></script>
+      <script src="components/SistemaUsuario/controllers/conteudoController.js"></script>
+      <script src="components/SistemaUsuario/controllers/questaoController.js"></script>
+      <script src="components/SistemaUsuario/controllers/topicosController.js"></script>
       <!-- <script src="js/angular/services/service.js"></script>
       <script src="js/angular/controllers/contatosCtrl.js"></script> -->
    </head>
-   <body ng-app="appModule" class="grad" style="height:100%;" >
-        
+   <body ng-app="appModule" class="grad" style="height:100%;" >        
 
-        <ng-view></ng-view>
+        <div ui-view ng-cloak></div>
     </body>
 
     
