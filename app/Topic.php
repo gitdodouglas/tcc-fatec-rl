@@ -12,7 +12,7 @@ class Topic extends Model
      * @var array
      */
     protected $fillable = [
-        'topic', 'description', 'number_sequence', 'quantity_questions', 'minimum_hit',
+        'topic', 'description', 'number_sequence', 'quantity_questions',
     ];
 
     /**
@@ -22,6 +22,15 @@ class Topic extends Model
      */
     protected $guarded = [
         'id', 'created_at', 'updated_at',
+    ];
+
+    /**
+     * Atributos que devem ser ocultos para arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'minimum_hit',
     ];
 
     /**

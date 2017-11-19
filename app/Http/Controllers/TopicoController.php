@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TopicoController extends Controller
 {
@@ -12,7 +13,7 @@ class TopicoController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -35,7 +36,61 @@ class TopicoController extends Controller
     public function topic(Request $request)
     {
         try {
-            //
+            /* Verifica a entrada de dados */
+            if ($request->json('id') == "" || $request->json('level_id') == "") {
+                throw new \Exception('Valor inválido.');
+            }
+
+            /* Verifica se o usuário informado está logado */
+            if ($request->json('id') != Auth::id() || Auth::id() == null) {
+                throw new \Exception('É necessário estar logado para acessar essa página.');
+            }
+
+            /* Instancia o controller de níveis */
+            $levelController = new LevelController;
+
+            /* Recupera todos os tópicos pertencentes ao nível */
+            $collection = $levelController->getTopics($request->json('level_id'));
+
+            /* Instancia o controller de desempenho do tópico */
+            $performanceController = new PerformanceController;
+
+            /* Realiza a busca do desempenho do tópico */
+            $userPerformance = $performanceController->query('id', $request->json('id'));
+
+            /* Instancia o controller de tópico */
+            $topicController = new TopicController;
+
+            /* Recupera o tópico em que o usuário está */
+            $userTopic = $topicController->read($userPerformance->topic_id);
+
+            /* Recupera todos os desempenhos de questões pertencentes ao usuário */
+            $performanceQuestions = $performanceController->getPerformanceQuestions($userPerformance->id);
+
+            /* Conta quantas questões foram resolvidas */
+            $questions_answered = $performanceQuestions->where('question_answered', 'sim')->count();
+
+            /* Mapeia cada item da coleção (realiza as operações sobre cada tópico) */
+            $collection->map(function($topic) use($userTopic, $questions_answered) {
+                $topic['codigoTopico'] = $topic->id;
+                $topic['nomeTopico'] = $topic->topic;
+                if ($topic['number_sequence'] < $userTopic->number_sequence) {
+                    $topic['questoesResolvidas'] = $topic->quantity_questions.'/'.$topic->quantity_questions;
+                } else if ($topic['number_sequence'] == $userTopic->number_sequence) {
+                    $topic['questoesResolvidas'] = $questions_answered.'/'.$topic->quantity_questions;
+                } else {
+                    $topic['questoesResolvidas'] = '0'.'/'.$topic->quantity_questions;
+                }
+                $topic['tipoEstado'] = $topic['number_sequence'] <= $userTopic->number_sequence ? 1 : 0;
+            });
+
+            return [
+                'codigo' => 'success',
+                'objeto' => [
+                    'topicos' => $collection,
+                ],
+                'mensagem' => null,
+            ];
         } catch (\Exception $exception) {
             return [
                 'codigo' => 'error',

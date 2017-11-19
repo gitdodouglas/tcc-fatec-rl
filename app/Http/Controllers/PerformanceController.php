@@ -39,6 +39,11 @@ class PerformanceController extends Controller
         return Performance::where($key, $value)->first();
     }
 
+    public function getPerformanceQuestions($id)
+    {
+        return Performance::find($id)->performanceQuestions;
+    }
+
     private function getPerformance($id)
     {
         return Performance::find($id);

@@ -42,7 +42,7 @@ class NivelController extends Controller
             }
 
             /* Verifica se o usuário informado está logado */
-            if ($request->json('id') != Auth::id()) {
+            if ($request->json('id') != Auth::id() || Auth::id() == null) {
                 throw new \Exception('É necessário estar logado para acessar essa página.');
             }
 
