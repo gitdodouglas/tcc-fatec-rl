@@ -58,7 +58,7 @@ class TopicoController extends Controller
             /* Realiza a busca do desempenho do tópico */
             $userPerformance = $performanceController->query('id', $request->json('id'));
 
-            /* Instancia o controller de tópico */
+            /* Instancia o controller de tópicos */
             $topicController = new TopicController;
 
             /* Recupera o tópico em que o usuário está */

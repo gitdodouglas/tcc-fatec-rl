@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Question;
 use App\Topic;
 use Illuminate\Http\Request;
 
@@ -40,9 +39,14 @@ class TopicController extends Controller
         return Topic::where($key, $value)->first();
     }
 
+    public function getContents($id)
+    {
+        return Topic::find($id)->contents;
+    }
+
     public function getQuestions($id)
     {
-        return Question::find($id)->questions;
+        return Topic::find($id)->questions;
     }
 
     private function getTopic($id)

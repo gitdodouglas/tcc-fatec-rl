@@ -41,7 +41,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/questoes',
             templateUrl : "components/SistemaUsuario/partials/tela-questao.html"
         });
-         $urlRouterProvider.otherwise('/404');
+         $urlRouterProvider.otherwise('/home');
 
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
         

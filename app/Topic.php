@@ -46,6 +46,17 @@ class Topic extends Model
 
     /**
      * Relação um-para-muitos.
+     * Função que retorna os conteúdos relacionados ao tópico.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function contents()
+    {
+        return $this->hasMany(Content::class);
+    }
+
+    /**
+     * Relação um-para-muitos.
      * Função que retorna as questões relacionadas ao tópico.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
