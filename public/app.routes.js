@@ -10,7 +10,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             template : "<h1>Main</h1><p>Click on the links to change this content</p>"
         })
         .state("principal", {
-            url: '/principal/:item_id',
+            url: '/principal',
             templateUrl : "components/SistemaUsuario/partials/tela-home.html"
         })
         .state("login", {
@@ -41,7 +41,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/questoes',
             templateUrl : "components/SistemaUsuario/partials/tela-questao.html"
         });
-         $urlRouterProvider.otherwise('/altera');
+         $urlRouterProvider.otherwise('/404');
 
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
         

@@ -15,8 +15,8 @@ app.controller("loginController", function($scope, $http, md5, $cookieStore, Aut
         };
     
         //$scope.limparDados();
-        $scope.dados.email = "admin@admin.com";
-        $scope.dados.password = "admin";
+        //$scope.dados.email = "admin@admin.com";
+        //$scope.dados.password = "admin";
     
         $scope.submit = function(){
 
