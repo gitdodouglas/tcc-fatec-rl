@@ -1,5 +1,5 @@
 
-<div ng-controller="homeController">
+<div ng-cloak ng-controller="homeController">
     <div id="menu"></div>
 
     <div class="row indigo lighten-2" style="width:100%;margin-top:30px;">
@@ -48,7 +48,7 @@
 
             <div class="col s12 offset-l1 l3">
                 <div class="section" >
-                    <a href="#!topicos" ng-click="cadastro()">
+                    <a ng-click="cadastro()">
                         <div class="col s12 card-panel hoverable " style="margin-top:40px;padding:0;background:#ffffff;">
                             <div class="col s12 center teal lighten-2" >
                                 <h5 style="color:#ffffff; ">Moleza</h5>
@@ -57,10 +57,11 @@
                                 <i class="fa fa-unlock" style="font-size:60px;color:#616161 ;"  aria-hidden="true"></i>
                             </div>
                             <div class="col s12 center" style="font-size:30px;">
-                                <p style="color:#616161 ; ">60%</p>
+                                <p style="color:#616161 ; ">{{niveis.basico.porcentagem}}%</p>
                             </div>
                             <div class="col s12" style="text-align:center; padding:10px;">
-                                <a href="#!topicos" class="waves-effect waves-light btn teal darken-1"  ng-click="cadastro()" >Continuar</a>
+                                <a ng-if='niveis.basico.tipoEstado == 0' class="waves-effect waves-light btn teal darken-1"   >Bloqueado</a>
+                                <a ng-if='niveis.basico.tipoEstado == 1' class="waves-effect waves-light btn teal darken-1" ng-click="acessarTopico(niveis.basico.codigoNivel)"  >Continuar</a>
                             </div>
                         </div>
                     </a>
@@ -69,7 +70,7 @@
 
             <div class="col s12 offset-l1 l3">
                 <div class="section" >
-                    <a href="#!topicos" ng-click="cadastro()">
+                    <a ng-click="cadastro()">
                         <div class="col s12 card-panel hoverable" style="margin-top:40px;background:#ffffff; padding:0;">
                             <div class="col s12 center purple lighten-2" >
                                 <h5 style="color:#ffffff; ">Quase lá</h5>
@@ -78,10 +79,11 @@
                                 <i class="fa fa-lock" style="font-size:60px;color:#616161 ;" aria-hidden="true"></i>
                             </div>
                             <div class="col s12 center" style="font-size:30px;">
-                                <p style="color:#616161 ; ">0%</p>
+                                <p style="color:#616161 ; ">{{niveis.intermediario.porcentagem}}%</p>
                             </div>
                             <div class="col s12" style="text-align:center; padding:10px;">
-                                <a href="#!topicos" class="waves-effect waves-light btn purple darken-1"  ng-click="cadastro()" >Bloqueado</a>
+                                <a ng-if='niveis.intermediario.tipoEstado == 0' class="waves-effect waves-light btn purple darken-1" >Bloqueado</a>
+                                <a ng-if='niveis.intermediario.tipoEstado == 1' class="waves-effect waves-light btn purple darken-1" ng-click="acessarTopico(niveis.intermediario.codigoNivel)">Continuar</a>
                             </div>
                         </div>
                     </a>
@@ -90,7 +92,7 @@
 
             <div class="col s12 offset-l1 l3">
                 <div class="section" >
-                    <a href="#!topicos" ng-click="cadastro()">
+                    <a ng-click="cadastro()">
                         <div class="col s12 card-panel hoverable" style="margin-top:40px;background:#ffffff; padding:0;">
                             <div class="col s12 center green lighten-2" >
                                 <h5 style="color:#ffffff; ">Sabe tudo</h5>
@@ -99,10 +101,11 @@
                                 <i class="fa fa-lock" style="font-size:60px;color:#616161 ;" aria-hidden="true"></i>
                             </div>
                             <div class="col s12 center" style="font-size:30px;">
-                                <p style="color:#616161 ; ">0%</p>
+                                <p style="color:#616161 ; ">{{niveis.avancado.porcentagem}}%</p>
                             </div>
                             <div class="col s12" style="text-align:center; padding:10px;">
-                                <a href="#!topicos" class="waves-effect waves-light btn green darken-2"  ng-click="cadastro()" >Bloqueado</a>
+                                <a ng-if='niveis.avancado.tipoEstado == 0' class="waves-effect waves-light btn green darken-2"  >Bloqueado</a>
+                                <a ng-if='niveis.avancado.tipoEstado == 1' class="waves-effect waves-light btn green darken-2" ng-click="acessarTopico(niveis.avancado.codigoNivel)"  >Continuar</a>
                             </div>
                         </div>
                     </a>

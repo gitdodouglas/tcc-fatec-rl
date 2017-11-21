@@ -1,4 +1,4 @@
-app.controller("loginController", function($scope, $http, md5, $cookieStore, AutenticacaoService, $compile){
+app.controller("loginController", function($scope, $http, md5, $cookieStore, AutenticacaoService, $compile, $stateParams, $state){
         $('.button-collapse').sideNav('hide');
         $scope.dados = {};
         //console.log('oioiiioioo');
@@ -15,8 +15,11 @@ app.controller("loginController", function($scope, $http, md5, $cookieStore, Aut
         };
     
         //$scope.limparDados();
-        //$scope.dados.email = "admin@admin.com";
-        //$scope.dados.password = "admin";
+
+
+        $scope.dados.email = "admin@admin.com";
+        $scope.dados.password = "Admin!123";
+
     
         $scope.submit = function(){
 
@@ -37,14 +40,15 @@ app.controller("loginController", function($scope, $http, md5, $cookieStore, Aut
                         // }
                         if (response.data.codigo == 'success') {
                             var obj = response.data.objeto;
+                            console.log('resultadoLogin->',response);
                             //window.location.assign("/#!app");
+                            $cookieStore.put('cacheUsuarioY',(obj));
                             if(obj.codigo_tipo == 1){
-                                $cookieStore.put('token',(obj.info+obj.token));
-                                window.location.assign("/#!altera");
+                                $state.go('altera');                                
                             }
-                            if(obj.codigo_tipo == 0){
-                                $cookieStore.put('token',(obj.info+obj.token));
-                                window.location.assign("/#!principal");
+                            if(obj.codigo_tipo == 0){                              
+                                $state.go('principal');
+                                //window.location.assign("/#!principal");
                             }
 
                         }

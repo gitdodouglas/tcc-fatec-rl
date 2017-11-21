@@ -10,6 +10,30 @@ app.service('AutenticacaoService',
                 data : dados
             });
         };
+        
+        this.principal = function(dados){
+            
+            return  $http({
+                method : 'POST',
+                url : 'principal',
+                headers : {
+                    'Content-Type' : 'application/x-www-form-urlencoded'
+                },
+                data : dados
+            });
+        };
+
+        this.inicializarTopico = function(dados){
+            console.log('dados21->',dados);
+            return  $http({
+                method : 'POST',
+                url : 'topicos',
+                headers : {
+                    'Content-Type' : 'application/x-www-form-urlencoded'
+                },
+                data : dados
+            });
+        };
 
         this.cadastrar = function(dados){
             return  $http({

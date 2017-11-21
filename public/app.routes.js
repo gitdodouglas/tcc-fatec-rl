@@ -30,7 +30,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl : "components/Autenticacao/partials/tela-esqueci-senha.html"
         })
         .state("topicos", {
-            url: '/topicos',
+            url: '/topicos?id',
             templateUrl : "components/SistemaUsuario/partials/tela-topicos.html"
         })
         .state("conteudo", {
