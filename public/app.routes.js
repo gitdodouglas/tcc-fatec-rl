@@ -34,7 +34,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl : "components/SistemaUsuario/partials/tela-topicos.html"
         })
         .state("conteudo", {
-            url: '/conteudo',
+            url: '/conteudo?id&name',
             templateUrl : "components/SistemaUsuario/partials/tela-conteudo.html"
         })
         .state("questoes", {

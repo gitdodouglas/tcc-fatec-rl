@@ -12,8 +12,8 @@ app.controller("homeController", function($scope, $http, $cookieStore, Autentica
         });
 
         $scope.acessarTopico = function(codigo){
-          
-            $state.go('topicos',{id : '1'});    
+         
+            $state.go('topicos',{id : codigo});    
         };
 
         $('.dropdown-button').dropdown({

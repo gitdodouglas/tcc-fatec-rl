@@ -24,10 +24,22 @@ app.service('AutenticacaoService',
         };
 
         this.inicializarTopico = function(dados){
-            console.log('dados21->',dados);
+      
             return  $http({
                 method : 'POST',
                 url : 'topicos',
+                headers : {
+                    'Content-Type' : 'application/x-www-form-urlencoded'
+                },
+                data : dados
+            });
+        };
+
+        this.inicializarConteudo = function(dados){
+            console.log('dados21->',dados);
+            return  $http({
+                method : 'POST',
+                url : 'conteudo',
                 headers : {
                     'Content-Type' : 'application/x-www-form-urlencoded'
                 },

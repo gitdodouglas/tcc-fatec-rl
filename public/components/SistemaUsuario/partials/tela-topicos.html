@@ -36,8 +36,8 @@
                                     <i ng-if="topico.tipoEstado == 0" class="fa fa-lock" style="font-size:20px;color:#616161 ;"  aria-hidden="true"></i>
                                     <label style="font-size:15px;margin-left:10px;color:#616161;"><i class="fa fa-tasks" aria-hidden="true"></i> {{topico.questoesResolvidas}}</label> 
                                     <span class="spanTopico">
-                                        <a href="#!conteudo" style="font-size:15px;margin-left:10px;"><i class="fa fa-external-link" aria-hidden="true"></i> Conteúdo</a>  
-                                        <a href="#!questoes" style="font-size:15px;margin-left:10px;"><i class="fa fa-external-link" aria-hidden="true"></i> Questões</a>   
+                                        <a ng-click="acessarConteudo($index)" ng-if="topico.tipoEstado == 1" style="cursor:pointer;font-size:15px;margin-left:10px;"><i class="fa fa-external-link" aria-hidden="true" ></i> Conteúdo</a>  
+                                        <a  style="font-size:15px;margin-left:10px;"><i class="fa fa-external-link" aria-hidden="true"></i> Questões</a>   
                                     </span>
                                 </div>        
                             </div>
