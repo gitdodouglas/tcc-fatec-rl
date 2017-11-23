@@ -1,10 +1,10 @@
 app.config(function($stateProvider, $urlRouterProvider) {
-    
-   
+
+
 
     $stateProvider
 
-        // HOME STATES AND NESTED VIEWS ========================================
+    // HOME STATES AND NESTED VIEWS ========================================
         .state('home', {
             url: '/home',
             template : "<h1>Main</h1><p>Click on the links to change this content</p>"
@@ -34,17 +34,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl : "components/SistemaUsuario/partials/tela-topicos.html"
         })
         .state("conteudo", {
-            url: '/conteudo',
+            url: '/conteudo?id&name',
             templateUrl : "components/SistemaUsuario/partials/tela-conteudo.html"
         })
         .state("questoes", {
             url: '/questoes',
             templateUrl : "components/SistemaUsuario/partials/tela-questao.html"
         });
-         $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/home');
 
-        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
-        
+    // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
+
 });
 
 // app.config(function($routeProvider) {
@@ -88,13 +88,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
 // //       url: '/hello',
 // //       template: '<h3>hello world!</h3>'
 // //     }
-  
+
 // //     var aboutState = {
 // //       name: 'about',
 // //       url: '/about',
 // //       template: '<h3>Its the UI-Router hello world app!</h3>'
 // //     }
-  
+
 // //     $stateProvider.state(helloState);
 // //     $stateProvider.state(aboutState);
 // //   });

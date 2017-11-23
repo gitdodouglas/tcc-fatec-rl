@@ -39,6 +39,11 @@ class AlternativeController extends Controller
         return Alternative::where($key, $value)->first();
     }
 
+    public function getQuestion($id)
+    {
+        return Alternative::find($id)->question;
+    }
+
     private function getAlternative($id)
     {
         return Alternative::find($id);

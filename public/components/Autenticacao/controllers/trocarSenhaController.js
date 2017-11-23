@@ -1,4 +1,4 @@
-app.controller("trocarSenhaController", function($scope, $http, md5, $cookieStore, AutenticacaoService, $compile){
+app.controller("trocarSenhaController", function($scope, $http, md5, $cookieStore, AutenticacaoService, $compile, $stateParams, $state){
         $('.button-collapse').sideNav('hide');
         $scope.dados = {};
 
@@ -47,7 +47,7 @@ app.controller("trocarSenhaController", function($scope, $http, md5, $cookieStor
                         token = md5.createHash($cookieStore.get('token'));
 
                         AutenticacaoService.trocarSenha($scope.dados,token).then(function (response) {
-                            console.log('response->',response.data);
+                            //console.log('response->',response.data);
                             if((response.status == 200) && (response.data)){
                                 //console.log('response->',response.data);
                                 // if(response.data.codigo == 'success'){

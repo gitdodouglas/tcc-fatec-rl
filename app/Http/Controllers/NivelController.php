@@ -56,7 +56,7 @@ class NivelController extends Controller
             $performanceController = new PerformanceController;
 
             /* Realiza a busca do desempenho do usuário */
-            $userPerformance = $performanceController->query('id', $request->json('id'));
+            $userPerformance = $performanceController->query('user_id', $request->json('id'));
 
             /* Instancia o controller de tópico */
             $topicController = new TopicController;

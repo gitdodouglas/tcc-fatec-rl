@@ -1,8 +1,12 @@
-app.controller("topicosController", function($scope, $http, $cookieStore, AutenticacaoService, $compile, $stateParams, $state){	
+app.controller("topicosController", function($scope, $http, $cookieStore, AutenticacaoService, $compile, $stateParams, $state){
     $('.button-collapse').sideNav('hide');
 
-    $scope.dados = {};  
+    $scope.dados = {};
     $scope.usuario = $cookieStore.get('cacheUsuarioY');
+
+    if($scope.usuario == null){
+        $state.go('login');
+    }
 
     $scope.dadosTopicos = {
         1 : {
@@ -40,15 +44,25 @@ app.controller("topicosController", function($scope, $http, $cookieStore, Autent
         }
     };
 
-    $scope.topicoAtual = $scope.dadosTopicos[$stateParams.id];   
 
-    AutenticacaoService.colocarMenu('inside').then(function (response) {          
-        $compile($("#menu").html(response).contents())($scope);           
+
+    $scope.acessarConteudo = function(index){
+
+        if($scope.topicos[index].tipoEstado == '1'){
+            console.log('topicos21->',$scope.topicos[index].tipoEstado);
+            $state.go('conteudo',{id : $scope.topicos[index].id, name : $scope.topicos[index].nomeTopico});
+        }
+    };
+
+    $scope.topicoAtual = $scope.dadosTopicos[$stateParams.id];
+
+    AutenticacaoService.colocarMenu('inside').then(function (response) {
+        $compile($("#menu").html(response).contents())($scope);
     });
 
     AutenticacaoService.inicializarTopico({'id' : $scope.usuario.info.id, 'level_id' : $stateParams.id}).then(function (response) {
         $scope.topicos = {};
-        if((response.status == 200) && (response.data)){          
+        if((response.status == 200) && (response.data)){
             if (response.data.codigo == 'success') {
                 console.log('response->',response);
                 $scope.topicos = response.data.objeto.topicos;
@@ -56,8 +70,8 @@ app.controller("topicosController", function($scope, $http, $cookieStore, Autent
         }else{
             Materialize.toast('Desculpe, não foi possível acessar os níveis neste momento. Favor reiniciar a página.', 4000);
         }
-        
+
     });
 
-       
-}); 
+
+});

@@ -56,10 +56,16 @@ class AlteraController extends Controller
                             $user->password = bcrypt($request->json('new_password'));
                             $user->save();
 
-                            /* Insere a data de ativação do cadastro */
+                            /* Insere os dados de ativação do cadastro */
                             if (!$user->activated_at) {
                                 $user->activated_at = $user->updated_at;
                                 $user->save();
+
+                                /* Instancia o controller de desempenho do tópico */
+                                $performanceController = new PerformanceController;
+
+                                /* Cria o desempenho inicial do usuário */
+                                $performanceController->create($user);
                             }
 
                             /* Realiza a tentativa de login usando o e-mail e senha informados */

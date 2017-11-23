@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Alternative;
 use App\Question;
 use Illuminate\Http\Request;
 
@@ -42,7 +41,7 @@ class QuestionController extends Controller
 
     public function getAlternatives($id)
     {
-        return Alternative::find($id)->alternatives;
+        return Question::find($id)->alternatives;
     }
 
     private function getQuestion($id)

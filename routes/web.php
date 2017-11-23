@@ -51,7 +51,7 @@ Route::post('esqueci', 'RecuperaController@reset')->name('esqueci');
  */
 
 /* Debug */
-Route::get('/debug', 'ConteudoController@content');
+Route::get('/debug', 'QuestaoController@question');
 
 /* Níveis */
 Route::get('/principal', 'NivelController@index');
@@ -64,5 +64,9 @@ Route::post('/topicos', 'TopicoController@topic');
 /* Conteúdo */
 Route::get('/conteudo', 'ConteudoController@index');
 Route::post('/conteudo', 'ConteudoController@content');
+
+/* Questões */
+Route::get('/questoes', 'QuestaoController@index');
+Route::post('/questoes', 'QuestaoController@question');
 
 /*-----------------------------------------------------------------------*/

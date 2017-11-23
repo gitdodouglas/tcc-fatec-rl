@@ -18,7 +18,10 @@ app.controller("loginController", function($scope, $http, md5, $cookieStore, Aut
 
 
         $scope.dados.email = "admin@admin.com";
-        $scope.dados.password = "Admin!123";
+        $scope.dados.password = "admin";
+        //$scope.dados.password = "Admin!123";
+
+        //$scope.dados.password = md5.createHash($scope.dados.password);
 
     
         $scope.submit = function(){
@@ -40,17 +43,17 @@ app.controller("loginController", function($scope, $http, md5, $cookieStore, Aut
                         // }
                         if (response.data.codigo == 'success') {
                             var obj = response.data.objeto;
-                            console.log('resultadoLogin->',response);
+                            //console.log('resultadoLogin->',response);
                             //window.location.assign("/#!app");
                             $cookieStore.put('cacheUsuarioY',(obj));
                             if(obj.codigo_tipo == 1){
-                                $state.go('altera');                                
+                                $state.go('altera');
                             }
                             if(obj.codigo_tipo == 0){                              
                                 $state.go('principal');
                                 //window.location.assign("/#!principal");
                             }
-
+                            $cookieStore.put('token',(obj.info+obj.token));
                         }
                         Materialize.toast(response.data.mensagem, 4000);
                     }else{

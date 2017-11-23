@@ -1,10 +1,10 @@
 
-<div ng-controller="conteudoController">
+<div ng-cloak ng-controller="conteudoController">
     <div id="menu"></div>
 
     <div class="row teal  lighten-2" style="width:100%;margin-top:30px;">
-        <div class="container" >   
-            <div class="section "  > 
+        <div class="container" >
+            <div class="section "  >
                 <div  class="row" style="margin:0;" >
                     <div class="col s12">
                         <div class="col s12 m12 l1 center">
@@ -12,31 +12,23 @@
                         </div>
                         <!-- <div classs="col s12 center"><h1 style="color: #f4f8f9;">Trocar Senha</h1></div> -->
                         <div class="col s12 m12 l11 center">
-                            <label  id="titleHead" style="color: #f4f8f9; font-size:50px; ">Variáveis / </label>
+                            <label  id="titleHead" style="color: #f4f8f9; font-size:50px; ">{{conteudo.name}} / </label>
                             <label class="hide-on-large-only" id="titleHead" style="margin-left:10px; color: #f4f8f9; font-size:30px;">Conteúdo</label>
                             <label class="hide-on-med-and-down" id="titleHead" style="margin:20px 0 0 10px; color: #f4f8f9; font-size:30px;">Conteúdo</label>
                         </div>
                     </div>
-                </div>    
+                </div>
             </div>
-        </div>        
+        </div>
     </div>
-    
+
     <div class="container">
         <div class="section card-panel" style="background: #ffffff; padding:50px;" >
-         
-            <div class="col s12">              
-                <div class="row" style="margin-bottom:0px;">           
+
+            <div class="col s12">
+                <div class="row" style="margin-bottom:0px;">
                     <div class="col s12">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dictum eros ante, et mollis orci hendrerit et. Nulla tristique ultrices lectus, et gravida nibh interdum in. Nam ac tincidunt sapien, quis sagittis erat. Nulla at leo finibus mi maximus malesuada ut convallis eros. Donec a metus magna. Nullam ac tortor sit amet sem dapibus placerat. Nam nec lectus ipsum. Integer porttitor ante mauris, nec placerat turpis elementum sit amet. Phasellus nec purus semper, maximus urna sit amet, ornare ligula. Praesent eget hendrerit nunc, non posuere nisi. Proin sit amet neque quis lorem lacinia ultricies vel ut risus. Ut sollicitudin, velit ac pellentesque vulputate, est nibh posuere tellus, vel gravida erat orci ac sem. Pellentesque rutrum ut felis eu pharetra. Nam dolor eros, dapibus vel ante eget, interdum pretium dui. Nullam a tortor pretium quam bibendum euismod. Donec ac purus et diam efficitur dignissim eget congue elit.
-                                
-                                Curabitur hendrerit ipsum vitae porta tincidunt. Suspendisse erat erat, varius ut tincidunt id, sodales sed nibh. Donec mollis erat ac semper lacinia. Ut ut suscipit erat. Vivamus efficitur tincidunt magna sed sagittis. Etiam imperdiet non ipsum et viverra. Morbi id risus nunc. Proin mattis, massa et commodo rutrum, leo ex vestibulum neque, at pharetra neque leo a justo. Integer at turpis et erat gravida tristique a vitae magna. Curabitur dictum leo turpis, eget rutrum eros eleifend a. Vestibulum viverra mauris eu tortor vehicula finibus. Sed mi nunc, efficitur a condimentum eget, cursus quis elit. Vestibulum id felis eget sem aliquet consequat. Nulla sed dictum nisl, non gravida orci.
-                                
-                                Phasellus tempus sapien eget est molestie tincidunt. Praesent eros lacus, bibendum ac blandit at, placerat ac magna. Mauris et pharetra arcu. Nulla sit amet sollicitudin tellus, eget laoreet augue. Sed quis velit diam. Quisque eu commodo nisi. Fusce accumsan placerat viverra. Duis scelerisque, felis in pulvinar dictum, leo orci rutrum elit, a ultricies erat sem id quam. Cras at massa sit amet est vestibulum facilisis quis ut nisl. Mauris nec facilisis ante. Morbi commodo sem nec vestibulum laoreet. Vivamus tortor urna, dictum non arcu vel, maximus scelerisque lectus. Fusce nec faucibus augue. Vestibulum odio diam, tristique vel blandit quis, interdum vitae est. Nullam dolor ante, venenatis quis mi nec, molestie viverra purus.
-                                
-                                Quisque in elit id est finibus fermentum luctus ut velit. Integer sit amet pretium mauris. Etiam scelerisque lorem gravida turpis scelerisque, tincidunt vestibulum purus volutpat. Aenean aliquam dignissim rhoncus. Fusce molestie in justo sed pretium. Integer commodo vitae urna non dapibus. Vestibulum pellentesque pharetra erat. Nam ut venenatis urna, vitae maximus sapien. Curabitur non nisi finibus, pretium purus facilisis, porta massa. Praesent sit amet justo vitae magna hendrerit volutpat at vitae augue. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc non sapien vel dolor eleifend semper sit amet ac sem. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec dictum velit et sem maximus pharetra. Nunc leo augue, faucibus nec magna dapibus, lacinia posuere urna. Proin venenatis enim ac facilisis condimentum.
-                                
-                                Fusce viverra mi nec velit facilisis sodales. Mauris in elit quis ante efficitur placerat. Nullam in lorem dapibus, rhoncus elit et, fermentum diam. Suspendisse enim turpis, cursus quis placerat in, eleifend in massa. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus venenatis faucibus enim, sit amet finibus justo interdum vel. Vestibulum condimentum vehicula ipsum sed finibus. Etiam efficitur, lectus eu dictum dapibus, dui justo laoreet dolor, a malesuada tortor neque non ex. Nullam suscipit lectus turpis. In hac habitasse platea dictumst.</p> 
+                        <p>{{conteudo.content}}</p>
                     </div>
 
                 </div>
@@ -60,8 +52,8 @@
                             </div>
                         </div>
                     </div>
-                <div>
+                    <div>
+                    </div>
+                </div>
             </div>
-        </div>    
-    </div>
-</div>
+        </div>

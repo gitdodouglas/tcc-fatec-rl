@@ -3,8 +3,8 @@
     <div id="menu"></div>
 
     <div class="row" ng-style="topicoAtual.style.fundo" style="width:100%;margin-top:30px;">
-        <div class="container" >   
-            <div class="section "  > 
+        <div class="container" >
+            <div class="section "  >
                 <div  class="row" style="margin:0;" >
                     <div class="col s12">
                         <div class="col s12 m12 l2 center">
@@ -12,42 +12,42 @@
                         </div>
                         <!-- <div classs="col s12 center"><h1 style="color: #f4f8f9;">Trocar Senha</h1></div> -->
                         <div class="col s12 m12 l10 center"><h1 id="titleHead" style="color: #f4f8f9; ">Tópicos do {{topicoAtual.title}}</h1></div>
-                        
+
                     </div>
-                </div>    
+                </div>
             </div>
-        </div>        
+        </div>
     </div>
-    
+
     <div class="container">
         <div class="section card-panel" style="background: #ffffff;" >
-         
+
             <div class="col s12 offset-m2 m8">
                 <div ng-repeat="topico in topicos">
-                    <div class="section" style="margin-top:20px;margin-bottom:20px;">  
-                        <div class="row" style="margin-bottom:0px;">           
+                    <div class="section" style="margin-top:20px;margin-bottom:20px;">
+                        <div class="row" style="margin-bottom:0px;">
                             <div class="col s12">
-                                <div class="col s12 " >                            
-                                    <label style="color:#616161;font-size: 30px; margin-left: 20px; ">{{topico.nomeTopico}}</label> 
-                                </div>                        
-                                
-                                <div class="col s12 offset-s1  " >  
+                                <div class="col s12 " >
+                                    <label style="color:#616161;font-size: 30px; margin-left: 20px; ">{{topico.nomeTopico}}</label>
+                                </div>
+
+                                <div class="col s12 offset-s1  " >
                                     <i ng-if="topico.tipoEstado == 1"  class="fa fa-unlock" style="font-size:20px;color:#616161 ;"  aria-hidden="true"></i>
                                     <i ng-if="topico.tipoEstado == 0" class="fa fa-lock" style="font-size:20px;color:#616161 ;"  aria-hidden="true"></i>
-                                    <label style="font-size:15px;margin-left:10px;color:#616161;"><i class="fa fa-tasks" aria-hidden="true"></i> {{topico.questoesResolvidas}}</label> 
+                                    <label style="font-size:15px;margin-left:10px;color:#616161;"><i class="fa fa-tasks" aria-hidden="true"></i> {{topico.questoesResolvidas}}</label>
                                     <span class="spanTopico">
-                                        <a href="#!conteudo" style="font-size:15px;margin-left:10px;"><i class="fa fa-external-link" aria-hidden="true"></i> Conteúdo</a>  
-                                        <a href="#!questoes" style="font-size:15px;margin-left:10px;"><i class="fa fa-external-link" aria-hidden="true"></i> Questões</a>   
+                                        <a ng-click="acessarConteudo($index)" ng-if="topico.tipoEstado == 1" style="cursor:pointer;font-size:15px;margin-left:10px;"><i class="fa fa-external-link" aria-hidden="true" ></i> Conteúdo</a>
+                                        <a  style="font-size:15px;margin-left:10px;"><i class="fa fa-external-link" aria-hidden="true"></i> Questões</a>
                                     </span>
-                                </div>        
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div ng-if="$index != (topicos.length-1)" class="col s12" ng-style="topicoAtual.style.borda"></div>  
 
-                </div>  
-            </div>           
-        </div>    
+                    <div ng-if="$index != (topicos.length-1)" class="col s12" ng-style="topicoAtual.style.borda"></div>
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>

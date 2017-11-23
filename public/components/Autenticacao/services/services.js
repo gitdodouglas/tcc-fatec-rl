@@ -1,4 +1,4 @@
-app.service('AutenticacaoService', 
+app.service('AutenticacaoService',
     function($http, $templateRequest, $sce){
         this.logar = function(dados){
             return  $http({
@@ -10,9 +10,9 @@ app.service('AutenticacaoService',
                 data : dados
             });
         };
-        
+
         this.principal = function(dados){
-            
+
             return  $http({
                 method : 'POST',
                 url : 'principal',
@@ -24,10 +24,22 @@ app.service('AutenticacaoService',
         };
 
         this.inicializarTopico = function(dados){
-            console.log('dados21->',dados);
+
             return  $http({
                 method : 'POST',
                 url : 'topicos',
+                headers : {
+                    'Content-Type' : 'application/x-www-form-urlencoded'
+                },
+                data : dados
+            });
+        };
+
+        this.inicializarConteudo = function(dados){
+            console.log('dados21->',dados);
+            return  $http({
+                method : 'POST',
+                url : 'conteudo',
                 headers : {
                     'Content-Type' : 'application/x-www-form-urlencoded'
                 },
@@ -48,7 +60,7 @@ app.service('AutenticacaoService',
 
         this.trocarSenha = function(dados,token){
             //console.log('request->', dados);
-            dados.token = token;     
+            dados.token = token;
             return  $http({
                 method : 'POST',
                 url : 'altera',
@@ -66,8 +78,8 @@ app.service('AutenticacaoService',
 
             }else{
                 templateUrl = $sce.getTrustedResourceUrl('components/Menus/partials/inside-menu.html');
-            }          
-            
+            }
+
             return $templateRequest(templateUrl);
         };
 

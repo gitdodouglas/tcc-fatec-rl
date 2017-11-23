@@ -12,9 +12,15 @@ class PerformanceController extends Controller
         return Performance::all();
     }
 
-    public function create(Request $request)
+    public function create($user)
     {
-        //
+        $performance = new Performance;
+        $performance->user_id = $user->id;
+        $performance->user_email = $user->email;
+        $performance->topic_id = 1;
+        $performance->status_performance_id = 1;
+        $performance->save();
+        return $performance;
     }
 
     public function read($id)

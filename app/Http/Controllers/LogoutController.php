@@ -15,6 +15,7 @@ class LogoutController extends Controller
     public function index()
     {
         Auth::logout();
+        setcookie('cacheUsuarioY', '', time() - 3600);
         return redirect('/#!logout');
     }
 
@@ -28,13 +29,13 @@ class LogoutController extends Controller
         try {
             Auth::logout();
             return [
-                'codigo' => '0',
+                'codigo' => 'success',
                 'objeto' => null,
                 'mensagem' => 'Usuário desconectado!',
             ];
         } catch (Exception $exception) {
             return [
-                'codigo' => '1',
+                'codigo' => 'error',
                 'objeto' => null,
                 'mensagem' => $exception->getMessage(),
             ];
