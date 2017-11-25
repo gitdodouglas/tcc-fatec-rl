@@ -12,9 +12,14 @@ class PerformanceQuestionController extends Controller
         return PerformanceQuestion::all();
     }
 
-    public function create(Request $request)
+    public function create($performanceId, $questionId)
     {
-        //
+        $performance = new PerformanceQuestion;
+        $performance->question_answered = 'nao';
+        $performance->performance_id = $performanceId;
+        $performance->question_id = $questionId;
+        $performance->save();
+        return $performance;
     }
 
     public function read($id)

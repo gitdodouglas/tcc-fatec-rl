@@ -7,7 +7,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     // HOME STATES AND NESTED VIEWS ========================================
         .state('home', {
             url: '/home',
-            template : "<h1>Main</h1><p>Click on the links to change this content</p>"
+            templateUrl : "components/Index/partials/index.html"
         })
         .state("principal", {
             url: '/principal',

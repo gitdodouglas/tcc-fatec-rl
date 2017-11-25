@@ -24,7 +24,7 @@ class TopicoController extends Controller
      */
     public function index()
     {
-        return redirect('/#!topicos');
+        return redirect('/#!principal');
     }
 
     /**
@@ -67,7 +67,7 @@ class TopicoController extends Controller
             /* Recupera todos os desempenhos de questões pertencentes ao usuário */
             $performanceQuestions = $performanceController->getPerformanceQuestions($userPerformance->id);
 
-            /* Conta quantas questões foram resolvidas */
+            /* Conta quantas questões foram respondidas */
             $questions_answered = $performanceQuestions->where('question_answered', 'sim')->count();
 
             /* Mapeia cada item da coleção (realiza as operações sobre cada tópico) */
@@ -82,6 +82,7 @@ class TopicoController extends Controller
                     $topic['questoesResolvidas'] = '0'.'/'.$topic->quantity_questions;
                 }
                 $topic['tipoEstado'] = $topic['number_sequence'] <= $userTopic->number_sequence ? 1 : 0;
+                array_except($topic, ['id', 'topic', 'description', 'number_sequence', 'quantity_questions', 'level_id', 'created_at', 'updated_at']);
             });
 
             return [

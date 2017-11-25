@@ -1,6 +1,12 @@
-app.controller("cadastroController", function($scope, $http, $cookieStore, AutenticacaoService, $compile){	
+app.controller("cadastroController", function($scope, $http, $cookieStore, AutenticacaoService, $compile, $state){
         $('.button-collapse').sideNav('hide');
-        $scope.dados = {};   
+        $scope.dados = {};
+
+        $scope.usuario = $cookieStore.get('cacheUsuarioY');
+
+        if($scope.usuario != null){
+            $state.go('principal');
+        }
 
            
         AutenticacaoService.colocarMenu('outside').then(function (response) {          

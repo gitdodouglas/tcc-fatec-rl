@@ -1,0 +1,25 @@
+
+.azulClaro {
+  background-color: #2196f3 !important;
+}
+
+.cinza {
+  background-color: #f4f8f9;
+}
+
+#frase-inicial {
+  margin-top: 40px;
+  color: #212121;
+}
+
+#logo-frase {
+  margin-top: 40px;
+}
+
+#botao-cadastro {
+  margin-top: 20px;	
+}
+
+div#index-banner {
+  height: 500px;	
+}

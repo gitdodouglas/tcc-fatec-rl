@@ -3,6 +3,12 @@ app.controller("loginController", function($scope, $http, md5, $cookieStore, Aut
         $scope.dados = {};
         //console.log('oioiiioioo');
 
+        $scope.usuario = $cookieStore.get('cacheUsuarioY');
+
+        if($scope.usuario != null){
+            $state.go('principal');
+        }
+
         AutenticacaoService.colocarMenu('outside').then(function (response) {          
             $compile($("#menu").html(response).contents())($scope);           
         });
@@ -17,8 +23,8 @@ app.controller("loginController", function($scope, $http, md5, $cookieStore, Aut
         //$scope.limparDados();
 
 
-        $scope.dados.email = "admin@admin.com";
-        $scope.dados.password = "admin";
+        //$scope.dados.email = "admin@admin.com";
+        //$scope.dados.password = "admin";
         //$scope.dados.password = "Admin!123";
 
         //$scope.dados.password = md5.createHash($scope.dados.password);

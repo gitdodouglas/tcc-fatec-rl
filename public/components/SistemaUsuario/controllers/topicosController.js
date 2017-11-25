@@ -10,7 +10,7 @@ app.controller("topicosController", function($scope, $http, $cookieStore, Autent
 
     $scope.dadosTopicos = {
         1 : {
-            'title' : 'Moleza',
+            'title' : 'Tô começando',
             'style' : {
                 'fundo' : {
                     'background' : '#4db6ac'
@@ -49,8 +49,8 @@ app.controller("topicosController", function($scope, $http, $cookieStore, Autent
     $scope.acessarConteudo = function(index){
 
         if($scope.topicos[index].tipoEstado == '1'){
-            console.log('topicos21->',$scope.topicos[index].tipoEstado);
-            $state.go('conteudo',{id : $scope.topicos[index].id, name : $scope.topicos[index].nomeTopico});
+            //console.log('topicos21->',$scope.topicos[index].tipoEstado);
+            $state.go('conteudo',{id : $scope.topicos[index].codigoTopico, name : $scope.topicos[index].nomeTopico});
         }
     };
 
@@ -64,7 +64,7 @@ app.controller("topicosController", function($scope, $http, $cookieStore, Autent
         $scope.topicos = {};
         if((response.status == 200) && (response.data)){
             if (response.data.codigo == 'success') {
-                console.log('response->',response);
+                //console.log('response->',response);
                 $scope.topicos = response.data.objeto.topicos;
             }
         }else{

@@ -24,7 +24,7 @@ class ConteudoController extends Controller
      */
     public function index()
     {
-        return redirect('/#!conteudo');
+        return redirect('/#!principal');
     }
 
     /**

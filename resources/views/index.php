@@ -84,6 +84,8 @@
       <script src="components/Autenticacao/controllers/cadastroController.js"></script>   
       <script src="components/Autenticacao/controllers/trocarSenhaController.js"></script> 
       <script src="components/Autenticacao/controllers/esqueciSenhaController.js"></script>
+      <script src="components/Index/controllers/indexController.js"></script>
+      <script src="components/Menus/controllers/menuController.js"></script>
       <script src="components/SistemaUsuario/controllers/homeController.js"></script>
       <script src="components/SistemaUsuario/controllers/conteudoController.js"></script>
       <script src="components/SistemaUsuario/controllers/questaoController.js"></script>
