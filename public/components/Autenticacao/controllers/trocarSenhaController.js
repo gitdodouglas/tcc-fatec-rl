@@ -59,6 +59,7 @@ app.controller("trocarSenhaController", function($scope, $http, md5, $cookieStor
                                 // }
                                 if (response.data.codigo == 'success') {
                                     var obj = response.data.objeto;
+                                    $cookieStore.put('cacheUsuarioY',(obj));
                                     $cookieStore.put('token',(obj.info+obj.token));
                                     $state.go('principal');
                                     //window.location.assign("/#!app");
