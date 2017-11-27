@@ -54,14 +54,16 @@
                                 <h5 style="color:#ffffff; ">Tô começando</h5>
                             </div>
                             <div class="col s12 center" style="margin-top:30px;">
-                                <i class="fa fa-unlock" style="font-size:60px;color:#616161 ;"  aria-hidden="true"></i>
+                                <i ng-if='niveis.basico.tipoEstado == 0' class="fa fa-lock" style="font-size:60px;color:#616161 ;"  aria-hidden="true"></i>
+                                <i ng-if='niveis.basico.tipoEstado == 1' class="fa fa-unlock" style="font-size:60px;color:#616161 ;"  aria-hidden="true"></i>
                             </div>
                             <div class="col s12 center" style="font-size:30px;">
                                 <p style="color:#616161 ; ">{{niveis.basico.porcentagem}}%</p>
                             </div>
                             <div class="col s12" style="text-align:center; padding:10px;">
                                 <a ng-if='niveis.basico.tipoEstado == 0' class="waves-effect waves-light btn teal darken-1"   >Bloqueado</a>
-                                <a ng-if='niveis.basico.tipoEstado == 1' class="waves-effect waves-light btn teal darken-1" ng-click="acessarTopico(niveis.basico.codigoNivel)"  >Continuar</a>
+                                <a ng-if='niveis.basico.tipoEstado == 1 && niveis.basico.porcentagem != 100' class="waves-effect waves-light btn teal darken-1" ng-click="acessarTopico(niveis.basico.codigoNivel)"  >Continuar</a>
+                                <a ng-if='niveis.basico.porcentagem == 100' class="waves-effect waves-light btn teal darken-1" ng-click="acessarTopico(niveis.basico.codigoNivel)"  >Refazer</a>
                             </div>
                         </div>
                     </a>
@@ -76,14 +78,16 @@
                                 <h5 style="color:#ffffff; ">Quase lá</h5>
                             </div>
                             <div class="col s12 center" style="margin-top:30px;">
-                                <i class="fa fa-lock" style="font-size:60px;color:#616161 ;" aria-hidden="true"></i>
+                                <i ng-if='niveis.intermediario.tipoEstado == 0' class="fa fa-lock" style="font-size:60px;color:#616161 ;"  aria-hidden="true"></i>
+                                <i ng-if='niveis.intermediario.tipoEstado == 1' class="fa fa-unlock" style="font-size:60px;color:#616161 ;"  aria-hidden="true"></i>
                             </div>
                             <div class="col s12 center" style="font-size:30px;">
                                 <p style="color:#616161 ; ">{{niveis.intermediario.porcentagem}}%</p>
                             </div>
                             <div class="col s12" style="text-align:center; padding:10px;">
                                 <a ng-if='niveis.intermediario.tipoEstado == 0' class="waves-effect waves-light btn purple darken-1" >Bloqueado</a>
-                                <a ng-if='niveis.intermediario.tipoEstado == 1' class="waves-effect waves-light btn purple darken-1" ng-click="acessarTopico(niveis.intermediario.codigoNivel)">Continuar</a>
+                                <a ng-if='niveis.intermediario.tipoEstado == 1 && niveis.intermediario.porcentagem < 100' class="waves-effect waves-light btn purple darken-1" ng-click="acessarTopico(niveis.intermediario.codigoNivel)">Continuar</a>
+                                <a ng-if='niveis.intermediario.porcentagem == 100' class="waves-effect waves-light btn purple darken-1" ng-click="acessarTopico(niveis.intermediario.codigoNivel)"  >Refazer</a>
                             </div>
                         </div>
                     </a>
@@ -98,14 +102,16 @@
                                 <h5 style="color:#ffffff; ">Sabe tudo</h5>
                             </div>
                             <div class="col s12 center" style="margin-top:30px;">
-                                <i class="fa fa-lock" style="font-size:60px;color:#616161 ;" aria-hidden="true"></i>
+                                <i ng-if='niveis.avancado.tipoEstado == 0' class="fa fa-lock" style="font-size:60px;color:#616161 ;"  aria-hidden="true"></i>
+                                <i ng-if='niveis.avancado.tipoEstado == 1' class="fa fa-unlock" style="font-size:60px;color:#616161 ;"  aria-hidden="true"></i>
                             </div>
                             <div class="col s12 center" style="font-size:30px;">
                                 <p style="color:#616161 ; ">{{niveis.avancado.porcentagem}}%</p>
                             </div>
                             <div class="col s12" style="text-align:center; padding:10px;">
                                 <a ng-if='niveis.avancado.tipoEstado == 0' class="waves-effect waves-light btn green darken-2"  >Bloqueado</a>
-                                <a ng-if='niveis.avancado.tipoEstado == 1' class="waves-effect waves-light btn green darken-2" ng-click="acessarTopico(niveis.avancado.codigoNivel)"  >Continuar</a>
+                                <a ng-if='niveis.avancado.tipoEstado == 1 && niveis.avancado.porcentagem < 100' class="waves-effect waves-light btn green darken-2" ng-click="acessarTopico(niveis.avancado.codigoNivel)"  >Continuar</a>
+                                <a ng-if='niveis.avancado.porcentagem == 100' class="waves-effect waves-light btn green darken-2" ng-click="acessarTopico(niveis.avancado.codigoNivel)"  >Refazer</a>
                             </div>
                         </div>
                     </a>

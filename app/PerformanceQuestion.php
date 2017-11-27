@@ -12,7 +12,7 @@ class PerformanceQuestion extends Model
      * @var array
      */
     protected $fillable = [
-        'question_answered',
+        'question_answered', 'answered_correctly',
     ];
 
     /**

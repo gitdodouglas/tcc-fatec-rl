@@ -98,8 +98,11 @@ class NivelController extends Controller
                     /* Completa o nível básico; Libera o nível intermediário */
                     $porcentBasico = 100; $estadoInter = 1;
 
+                    /* Calcula a quantidade de tópicos do nível básico */
+                    $totalTopicosBasico = $levelController->getTopics(1)->count();
+
                     /* Calcula a porcentagem do progresso do usuário neste nível */
-                    $porcentInter = ceil((($userTopic->number_sequence - 1) / $totalTopicos) * 100);
+                    $porcentInter = ceil((($userTopic->number_sequence - $totalTopicosBasico - 1) / $totalTopicos) * 100);
 
                     break;
                 }
@@ -113,8 +116,14 @@ class NivelController extends Controller
                     $porcentBasico = 100; $porcentInter = 100;
                     $estadoInter = 1; $estadoAvanc = 1;
 
+                    /* Calcula a quantidade de tópicos do nível básico */
+                    $totalTopicosBasico = $levelController->getTopics(1)->count();
+
+                    /* Calcula a quantidade de tópicos do nível intermediário */
+                    $totalTopicosInter = $levelController->getTopics(2)->count();
+
                     /* Calcula a porcentagem do progresso do usuário neste nível */
-                    $porcentAvanc = ceil((($userTopic->number_sequence - 1) / $totalTopicos) * 100);
+                    $porcentAvanc = ceil((($userTopic->number_sequence - ($totalTopicosBasico + $totalTopicosInter) - 1) / $totalTopicos) * 100);
 
                     break;
                 }

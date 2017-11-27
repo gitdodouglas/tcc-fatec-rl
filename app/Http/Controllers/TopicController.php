@@ -39,6 +39,11 @@ class TopicController extends Controller
         return Topic::where($key, $value)->first();
     }
 
+    public function getLevel($id)
+    {
+        return Topic::find($id)->level;
+    }
+
     public function getContents($id)
     {
         return Topic::find($id)->contents;

@@ -16,6 +16,7 @@ class CreatePerformanceQuestionsTable extends Migration
         Schema::create('performance_questions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('question_answered', 3);
+            $table->string('answered_correctly', 3)->nullable();
             $table->integer('performance_id')->unsigned();
             $table->integer('question_id')->unsigned();
             $table->foreign('performance_id')
