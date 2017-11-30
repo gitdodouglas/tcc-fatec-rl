@@ -38,7 +38,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl : "components/SistemaUsuario/partials/tela-conteudo.html"
         })
         .state("questoes", {
-            url: '/questoes',
+            url: '/questoes?id',
             templateUrl : "components/SistemaUsuario/partials/tela-questao.html"
         });
     $urlRouterProvider.otherwise('/home');

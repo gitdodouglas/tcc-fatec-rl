@@ -54,6 +54,14 @@ app.controller("topicosController", function($scope, $http, $cookieStore, Autent
         }
     };
 
+    $scope.acessarQuestoes = function(index){
+
+        if($scope.topicos[index].tipoEstado == '1'){
+            //console.log('topicos21->',$scope.topicos[index].tipoEstado);
+            $state.go('questoes',{id : $scope.topicos[index].codigoTopico});
+        }
+    };
+
     $scope.topicoAtual = $scope.dadosTopicos[$stateParams.id];
 
     AutenticacaoService.colocarMenu('inside').then(function (response) {

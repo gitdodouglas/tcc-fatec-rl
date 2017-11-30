@@ -83,10 +83,36 @@ app.service('AutenticacaoService',
             return $templateRequest(templateUrl);
         };
 
+
+
         this.esqueciSenha = function(dados){
             return  $http({
                 method : 'POST',
                 url : 'esqueci',
+                headers : {
+                    'Content-Type' : 'application/x-www-form-urlencoded'
+                },
+                data : dados
+            });
+        };
+
+        this.responderQuestao = function(dados){
+            console.log('dados->',dados);
+            return  $http({
+                method : 'POST',
+                url : 'corrige',
+                headers : {
+                    'Content-Type' : 'application/x-www-form-urlencoded'
+                },
+                data : dados
+            });
+        };
+
+        this.inicializarQuestao = function(dados){
+
+            return  $http({
+                method : 'POST',
+                url : 'questoes',
                 headers : {
                     'Content-Type' : 'application/x-www-form-urlencoded'
                 },
