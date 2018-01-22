@@ -81,7 +81,8 @@ class TopicoController extends Controller
                 } else {
                     $topic['questoesResolvidas'] = '0'.'/'.$topic->quantity_questions;
                 }
-                $topic['tipoEstado'] = $topic['number_sequence'] <= $userTopic->number_sequence ? 1 : 0;
+                $topic['tipoEstado'] = $topic['number_sequence'] <= $userTopic->number_sequence && $topic->level_id <= $userTopic->level_id ? 1 : 0;
+                $topic['topicoAtivo'] = $topic->id == $userTopic->id ? 1 : 0;
                 array_except($topic, ['id', 'topic', 'description', 'number_sequence', 'quantity_questions', 'level_id', 'created_at', 'updated_at']);
             });
 

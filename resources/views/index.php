@@ -69,13 +69,13 @@
     }
 
       </style>
-       <script src="js/angular.min.js"></script>
-       <script src="js/angular-ui-router.min.js"></script>
-       
+      <script src="js/angular.min.js"></script>
+      <script src="js/angular-ui-router.min.js"></script>
      
       <script src="js/angular-md5.js"></script>
       <script src="js/angular-cookies.min.js"></script>
       <script src="js/ngMask.js"></script>
+      <script src="js/angular-sanitize.min.js"></script>
       <script src="app.module.js"></script>
       <script src="app.routes.js"></script>
       <script src="components/Autenticacao/services/services.js"></script>

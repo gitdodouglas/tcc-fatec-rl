@@ -1,4 +1,4 @@
-
+<script>window.onload = function () {window.location.reload()}</script>
 <div ng-cloak ng-controller="questaoController">
     <div id="menu"></div>
 
@@ -12,7 +12,7 @@
                         </div>
                         <!-- <div classs="col s12 center"><h1 style="color: #f4f8f9;">Trocar Senha</h1></div> -->
                         <div class="col s12 m12 l11 center">
-                            <label  id="titleHead" style="color: #f4f8f9; font-size:50px; ">Variáveis / </label>
+                            <label  id="titleHead" style="color: #f4f8f9; font-size:50px; ">{{objeto.nomeTopico}} / </label>
                             <label class="hide-on-large-only" id="titleHead" style="margin-left:10px; color: #f4f8f9; font-size:30px;">Questões</label>
                             <label class="hide-on-med-and-down" id="titleHead" style="margin:20px 0 0 10px; color: #f4f8f9; font-size:30px;">Questões</label>
                         </div>
@@ -26,7 +26,7 @@
         <div class="section card-panel" style="background: #ffffff; padding:50px;" >
             <div class="row">
                 <div class="col s12 center">
-                    <label style="font-size:30px;">Questão 1/5</label>
+                    <label style="font-size:30px;">Questão {{objeto.questoesResolvidas}}</label>
                 </div>
             </div>
             <div class="col s12">              
@@ -39,12 +39,14 @@
                 <div class="row">           
                     <div class="col s12">
                         <form action="#" >
+
                             <p ng-repeat="alternativa in questao.alternativas">
-                                <input ng-model="questaoRespondida" class="with-gap" name="questoes" value="{{alternativa.cdAlternativa}}" type="radio" id="alternativa{{$index}}" />
+                                <input ng-model="data.questaoRespondida" class="with-gap" name="questoes" value="{{alternativa.cdAlternativa}}" type="radio" id="alternativa{{$index}}" />
                                 <label style="color:#616161;" for="alternativa{{$index}}">{{alternativa.conteudoAlternativa}}</label>
                             </p>
 
                         </form>
+
                     </div>
 
                 </div>
@@ -52,19 +54,19 @@
                     <div class="col s12">
                         <div class="col s12 l6 btnContentDiv hide-on-med-and-down">
                             <div class="section">
-                                <a href="#!topicos" class="btn waves-effect waves-light btn teal darken-2 btnContentL" style="width:140px;">Voltar</a>
+                                <a href="javascript:history.back()" class="btn waves-effect waves-light btn teal darken-2 btnContentL" style="width:140px;">Voltar</a>
                             </div>
                         </div>
 
                         <div class="col s12 l6 btnContentDiv">
                             <div class="section">
-                                <a href="" ng-click="responderQuestao()" class="btn waves-effect waves-light btn teal darken-2 btnContentR " style="width:140px;">Avançar</a>
+                                <a href="" ng-click="responderQuestao()" class="btn waves-effect waves-light btn teal darken-2 btnContentR " style="width:140px;">Confirmar</a>
                             </div>
                         </div>
 
                         <div class="col s12 l6 btnContentDiv hide-on-large-only">
                             <div class="section">
-                                <a href="#!topicos" class="btn waves-effect waves-light btn teal darken-2 btnContentL" style="width:140px;">Voltar</a>
+                                <a href="javascript:history.back()" class="btn waves-effect waves-light btn teal darken-2 btnContentL" style="width:140px;">Voltar</a>
                             </div>
                         </div>
                     </div>

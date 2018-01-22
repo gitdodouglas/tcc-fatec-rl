@@ -63,7 +63,7 @@
                             <div class="col s12" style="text-align:center; padding:10px;">
                                 <a ng-if='niveis.basico.tipoEstado == 0' class="waves-effect waves-light btn teal darken-1"   >Bloqueado</a>
                                 <a ng-if='niveis.basico.tipoEstado == 1 && niveis.basico.porcentagem != 100' class="waves-effect waves-light btn teal darken-1" ng-click="acessarTopico(niveis.basico.codigoNivel)"  >Continuar</a>
-                                <a ng-if='niveis.basico.porcentagem == 100' class="waves-effect waves-light btn teal darken-1" ng-click="acessarTopico(niveis.basico.codigoNivel)"  >Refazer</a>
+                                <a ng-if='niveis.basico.porcentagem == 100' class="waves-effect waves-light btn teal darken-1" ng-click="acessarTopico(niveis.basico.codigoNivel)"  >Consultar</a>
                             </div>
                         </div>
                     </a>
@@ -87,7 +87,7 @@
                             <div class="col s12" style="text-align:center; padding:10px;">
                                 <a ng-if='niveis.intermediario.tipoEstado == 0' class="waves-effect waves-light btn purple darken-1" >Bloqueado</a>
                                 <a ng-if='niveis.intermediario.tipoEstado == 1 && niveis.intermediario.porcentagem < 100' class="waves-effect waves-light btn purple darken-1" ng-click="acessarTopico(niveis.intermediario.codigoNivel)">Continuar</a>
-                                <a ng-if='niveis.intermediario.porcentagem == 100' class="waves-effect waves-light btn purple darken-1" ng-click="acessarTopico(niveis.intermediario.codigoNivel)"  >Refazer</a>
+                                <a ng-if='niveis.intermediario.porcentagem == 100' class="waves-effect waves-light btn purple darken-1" ng-click="acessarTopico(niveis.intermediario.codigoNivel)"  >Consultar</a>
                             </div>
                         </div>
                     </a>
@@ -111,7 +111,7 @@
                             <div class="col s12" style="text-align:center; padding:10px;">
                                 <a ng-if='niveis.avancado.tipoEstado == 0' class="waves-effect waves-light btn green darken-2"  >Bloqueado</a>
                                 <a ng-if='niveis.avancado.tipoEstado == 1 && niveis.avancado.porcentagem < 100' class="waves-effect waves-light btn green darken-2" ng-click="acessarTopico(niveis.avancado.codigoNivel)"  >Continuar</a>
-                                <a ng-if='niveis.avancado.porcentagem == 100' class="waves-effect waves-light btn green darken-2" ng-click="acessarTopico(niveis.avancado.codigoNivel)"  >Refazer</a>
+                                <a ng-if='niveis.avancado.porcentagem == 100' class="waves-effect waves-light btn green darken-2" ng-click="acessarTopico(niveis.avancado.codigoNivel)"  >Consultar</a>
                             </div>
                         </div>
                     </a>

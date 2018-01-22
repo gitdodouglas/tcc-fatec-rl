@@ -3,7 +3,9 @@ app.controller("questaoController", function($scope, $http, $cookieStore, Autent
 
 
         $scope.dados = {};
-        $scope.questaoRespondida = '';
+        $scope.data = {
+            questaoRespondida : ''
+        };
         $scope.usuario = $cookieStore.get('cacheUsuarioY');
 
         if($scope.usuario == null){
@@ -16,9 +18,13 @@ app.controller("questaoController", function($scope, $http, $cookieStore, Autent
         });
 
         $scope.responderQuestao = function(index){
-
-            AutenticacaoService.responderQuestao({'id' : $scope.usuario.info.id, 'alternative_id' : $scope.questaoRespondida}).then(function (response) {
+            var dados = {
+                'id' : $scope.usuario.info.id,
+                'alternative_id' : $scope.data.questaoRespondida
+            };
+            AutenticacaoService.responderQuestao(dados).then(function (response) {
                 $scope.topicos = {};
+                console.log('response->',response);
                 if((response.status == 200) && (response.data)){
                     if (response.data.codigo == 'success') {
                         //console.log('response->',response);
@@ -36,6 +42,8 @@ app.controller("questaoController", function($scope, $http, $cookieStore, Autent
             if((response.status == 200) && (response.data)){
                 if (response.data.codigo == 'success') {
                     console.log('response->',response);
+                    response.data.objeto == null ? $state.reload() : false;
+                    $scope.objeto = response.data.objeto;
                     $scope.questao = response.data.objeto.questao;
                 }
             }else{

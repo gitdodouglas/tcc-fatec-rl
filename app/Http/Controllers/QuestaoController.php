@@ -74,7 +74,7 @@ class QuestaoController extends Controller
              */
             if ($totalQuestions == 0) {
                 /* Recupera todas as questões do tópico */
-                $questions = $topicController->getQuestions($userTopic->id);
+                $questions = $topicController->getQuestions($userPerformance->topic_id);
 
                 /* Sorteia as questões, selecionando a quantidade determinada no tópico */
                 $questions = $questions->shuffle()->take($userTopic->quantity_questions);
@@ -116,7 +116,8 @@ class QuestaoController extends Controller
                 return [
                     'codigo' => 'success',
                     'objeto' => [
-                        'questoesResolvidas' => $questions_answered.'/'.$userTopic->quantity_questions,
+                        'nomeTopico' => $userTopic->topic,
+                        'questoesResolvidas' => ($questions_answered + 1).'/'.$userTopic->quantity_questions,
                         'questao' => [
                             'codigoQuestao' => $question->question_id,
                             'conteudoQuestao' => $question->question->question,
@@ -187,7 +188,8 @@ class QuestaoController extends Controller
             $userPerformance = $performanceController->query('user_id', $request->json('id'));
 
             /* Recupera a questão respondida dentro do desempenho de questões pertencentes ao usuário */
-            $questionUser = $performanceController->getPerformanceQuestions($userPerformance->id)->where('question_id', $questionId)->first();
+            $questionUser = $performanceController->getPerformanceQuestions($userPerformance->id)->where('question_id', $questionId->id)->first();
+
             /* Instancia o controller de desempenho de questões */
             $performanceQuestionController = new PerformanceQuestionController;
 
@@ -227,7 +229,7 @@ class QuestaoController extends Controller
                     $questionController = new QuestionController;
 
                     /* Recupera a resposta correta da questão */
-                    $respostaCorreta = $questionController->getAlternatives($questionId)->where('right_answer', 'sim')[0]->alternative;
+                    $respostaCorreta = $questionController->getAlternatives($questionId->id)->where('right_answer', 'sim')[0]->alternative;
 
                     /* Feedback para o usuário */
                     $mensagem = 'Resposta certa: ' . $respostaCorreta;
@@ -259,7 +261,7 @@ class QuestaoController extends Controller
                     /* Instancia o controller de tópicos */
                     $topicController = new TopicController;
 
-                    /* Recura a ID do tópico atual */
+                    /* Recupera a ID do tópico atual */
                     $levelId = $topicController->getLevel($userPerformance->topic_id)->id;
 
                     /* Recupera o número de sequência do tópico atual */
@@ -282,6 +284,7 @@ class QuestaoController extends Controller
                     else {
                         $userPerformance->topic_id = $levelController->getTopics( (($levelId + 1) < 3 ? ($levelId + 1) : 3) )[0]->id;
                         $userPerformance->save();
+                        DB::table('performance_questions')->where('performance_id', $userPerformance->id)->delete();
                         $status = 2; $mensagem = 'Parabéns, você desbloqueou o próximo nível!';
                     }
 

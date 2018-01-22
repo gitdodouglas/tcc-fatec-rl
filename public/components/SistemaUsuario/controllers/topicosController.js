@@ -72,7 +72,7 @@ app.controller("topicosController", function($scope, $http, $cookieStore, Autent
         $scope.topicos = {};
         if((response.status == 200) && (response.data)){
             if (response.data.codigo == 'success') {
-                //console.log('response->',response);
+                console.log('response->',response);
                 $scope.topicos = response.data.objeto.topicos;
             }
         }else{

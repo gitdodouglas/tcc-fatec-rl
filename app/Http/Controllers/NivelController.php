@@ -127,6 +127,18 @@ class NivelController extends Controller
 
                     break;
                 }
+
+                /**
+                 * Default
+                 */
+                default :
+                {
+                    /* Completa o nível básico, intermediário e avançado; Libera todos os níveis */
+                    $porcentBasico = 100; $porcentInter = 100; $porcentAvanc = 100;
+                    $estadoInter = 1; $estadoAvanc = 1;
+
+                    break;
+                }
             }
 
             return [
