@@ -13,7 +13,7 @@
 }
 
 #logo-frase {
-  margin-top: 40px;
+  padding-top: 160px;
 }
 
 #botao-cadastro {
@@ -22,4 +22,42 @@
 
 div#index-banner {
   height: 500px;	
+}
+
+
+
+
+#menu {
+	z-index: 999999999;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+.parallax-1 {
+	min-height: 675px;
+	background: rgba(0,0,0,.15);
+}
+
+.parallax-2 {
+	background: rgba(0,0,0,.75);
+}
+
+.logo {
+	filter: brightness(500);
+	opacity: .9;
+}
+
+h1 {
+	text-transform: uppercase;
+}
+
+.container p {
+	text-align: justify;
+}
+
+.section {
+	padding-top: 75px;
+	padding-bottom: 75px;
 }
