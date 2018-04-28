@@ -210,7 +210,8 @@ class QuestaoController extends Controller
                     $performanceQuestion->save();
 
                     /* Feedback para o usuário */
-                    $status = 1; $mensagem = 'Resposta correta. Parabéns, continue assim!';
+                    //$status = 1; $mensagem = 'Resposta correta. Parabéns, continue assim!';
+                    $status = 1; $mensagem = 'Resposta certa';
 
                     break;
                 }
@@ -232,7 +233,8 @@ class QuestaoController extends Controller
                     $respostaCorreta = $questionController->getAlternatives($questionId->id)->where('right_answer', 'sim')[0]->alternative;
 
                     /* Feedback para o usuário */
-                    $mensagem = 'Resposta certa: ' . $respostaCorreta;
+                    //$mensagem = 'Resposta certa: ' . $respostaCorreta;
+                    $status = 1; $mensagem = 'Resposta errada';
 
                     break;
                 }
