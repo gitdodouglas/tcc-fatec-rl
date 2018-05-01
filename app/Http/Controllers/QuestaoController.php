@@ -234,7 +234,7 @@ class QuestaoController extends Controller
 
                     /* Feedback para o usuário */
                     //$mensagem = 'Resposta certa: ' . $respostaCorreta;
-                    $status = 1; $mensagem = 'Resposta errada';
+                    $status = 2; $mensagem = 'Resposta errada';
 
                     break;
                 }
@@ -280,21 +280,21 @@ class QuestaoController extends Controller
                         $userPerformance->topic_id = $topicController->query('number_sequence', $seqTopico + 1)->id;
                         $userPerformance->save();
                         DB::table('performance_questions')->where('performance_id', $userPerformance->id)->delete();
-                        $status = 2; $mensagem = 'Parabéns, você desbloqueou o próximo tópico!';
+                        $status = 3; $mensagem = 'Parabéns, você desbloqueou o próximo tópico!';
                     }
                     /* Senão, desbloqueia o próximo nível */
                     else {
                         $userPerformance->topic_id = $levelController->getTopics( (($levelId + 1) < 3 ? ($levelId + 1) : 3) )[0]->id;
                         $userPerformance->save();
                         DB::table('performance_questions')->where('performance_id', $userPerformance->id)->delete();
-                        $status = 2; $mensagem = 'Parabéns, você desbloqueou o próximo nível!';
+                        $status = 4; $mensagem = 'Parabéns, você desbloqueou o próximo nível!';
                     }
 
                 }
                 /* Senão */
                 else {
                     DB::table('performance_questions')->where('performance_id', $userPerformance->id)->delete();
-                    $status = 3; $mensagem = 'Recomendamos que reveja o conteúdo teórico para poder prosseguir.';
+                    $status = 5; $mensagem = 'Recomendamos que reveja o conteúdo teórico para poder prosseguir.';
                 }
 
 
