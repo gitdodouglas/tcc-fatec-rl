@@ -165,7 +165,7 @@ class QuestaoController extends Controller
             }
 
             /* Variáveis auxiliares */
-            $status = 0; $mensagem = '';
+            $status = 0; $mensagem = ''; $resposta = '';
             /* ------------------------------------------------- */
 
 
@@ -234,7 +234,7 @@ class QuestaoController extends Controller
 
                     /* Feedback para o usuário */
                     //$mensagem = 'Resposta certa: ' . $respostaCorreta;
-                    $status = 2; $mensagem = 'Resposta errada';
+                    $status = 2; $mensagem = 'Resposta errada'; $resposta = $respostaCorreta;
 
                     break;
                 }
@@ -305,6 +305,7 @@ class QuestaoController extends Controller
                 'objeto' => [
                     'resposta' => [
                         'cdStatus' => $status,
+                        'respCorreta' => $resposta,
                     ],
                 ],
                 'mensagem' => $mensagem,
