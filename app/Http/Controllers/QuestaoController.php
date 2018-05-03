@@ -195,6 +195,9 @@ class QuestaoController extends Controller
 
             /* Recupera o desempenho da questão escolhida */
             $performanceQuestion = $performanceQuestionController->read($questionUser->id);
+            
+            /* Recupera a ID do tópico atual */
+            $topicoId = $userPerformance->topic_id;
 
             /* Avalia a resposta dada */
             switch ($alternative->right_answer)
@@ -300,6 +303,9 @@ class QuestaoController extends Controller
 
             }
 
+            $proxTopico = ($topicoId + 1);
+            $proxNivel = ($levelId + 1);
+
             return [
                 'codigo' => 'success',
                 'objeto' => [
@@ -308,6 +314,8 @@ class QuestaoController extends Controller
                         'respCorreta' => $resposta,
                         'cdDesbloqueio' => $desbloqueio,
                         'msgDesbloqueio' => $mensagemDesbloq,
+                        'proxTopico' => $proxTopico,
+                        'proxNivel' => $proxNivel,
                     ],
                 ],
                 'mensagem' => $mensagem,
