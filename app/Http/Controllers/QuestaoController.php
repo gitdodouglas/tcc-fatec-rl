@@ -266,7 +266,7 @@ class QuestaoController extends Controller
                     /* Instancia o controller de tópicos */
                     $topicController = new TopicController;
 
-                    /* Recupera a ID do tópico atual */
+                    /* Recupera a ID do nível atual */
                     $levelId = $topicController->getLevel($userPerformance->topic_id)->id;
 
                     /* Recupera o número de sequência do tópico atual */
