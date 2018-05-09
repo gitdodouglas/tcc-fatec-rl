@@ -1,5 +1,15 @@
 <script>window.onload = function () {window.location.reload()}</script>
 <div ng-cloak ng-controller="questaoController">
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>{{modalTitle}}</h4>
+            <p>{{modalText}}</p>
+        </div>
+        <div class="modal-footer">
+            <a class="modal-close waves-effect waves-green btn" style="margin-right: 10px;" ng-click="btnModalContinuar()">Continuar</a>
+        </div>
+    </div>
     <div id="menu"></div>
 
     <div class="row teal  lighten-2" style="width:100%;margin-top:30px;">
@@ -29,44 +39,56 @@
                     <label style="font-size:30px;">Questão {{objeto.questoesResolvidas}}</label>
                 </div>
             </div>
-            <div class="col s12">              
-                <div class="row">           
+            <div class="col s12"> 
+                <div class="row" ng-show="questaoRespondida">
+                    <div class="col s12 center">
+                        <label class="respostaCondicao" style="color:#8bc34a;" ng-show="cdResposta == 1">Você acertou</label>
+                        <label class="respostaCondicao" style="color:#f44336;" ng-show="cdResposta == 2">Você errou</label>
+                    </div> 
+                </div>             
+                <div class="row">
                     <div class="col s12">
                         <p style="color:#616161;">{{questao.conteudoQuestao}}</p>
                     </div>
-
                 </div>
-                <div class="row">           
+                <!-- <div class="row" ng-show="questaoRespondida">           
+                    <div class="col s12 ">                              
+                        <p style="color:#33691e;">Resposta Correta: {{respostaCerta}}</p>               
+                    </div> 
+                </div> -->
+                <div class="row" >           
                     <div class="col s12">
                         <form action="#" >
 
-                            <p ng-repeat="alternativa in questao.alternativas">
-                                <input ng-model="data.questaoRespondida" class="with-gap" name="questoes" value="{{alternativa.cdAlternativa}}" type="radio" id="alternativa{{$index}}" />
-                                <label style="color:#616161;" for="alternativa{{$index}}">{{alternativa.conteudoAlternativa}}</label>
+                            <p ng-repeat="alternativa in questao.alternativas" ng-style="(alternativa.conteudoAlternativa == respostaCerta) ? {'color':'#8bc34a'} : ((alternativa.conteudoAlternativa == respostaUsuario) ? {'color':'#f44336'} : '')">
+                                <input  ng-style="(alternativa.conteudoAlternativa == respostaCerta) ? {'color':'#8bc34a'} : ((alternativa.conteudoAlternativa == respostaUsuario) ? {'color':'#f44336'} : {'color':'#616161'})" ng-model="data.questaoRespondida" class="disabledAlternativa with-gap" name="questoes" value="{{$index}}" type="radio" id="alternativa{{$index}}" />
+                                <label ng-style="(alternativa.conteudoAlternativa == respostaCerta) ? {'color':'#8bc34a'} : ((alternativa.conteudoAlternativa == respostaUsuario) ? {'color':'#f44336'} : {'color':'#616161'})" for="alternativa{{$index}}">{{alternativa.conteudoAlternativa}}</label>
                             </p>
 
                         </form>
 
                     </div>
 
-                </div>
+                </div> 
+
                 <div class="row" style="margin-top:50px;">
                     <div class="col s12">
                         <div class="col s12 l6 btnContentDiv hide-on-med-and-down">
                             <div class="section">
-                                <a href="javascript:history.back()" class="btn waves-effect waves-light btn teal darken-2 btnContentL" style="width:140px;">Voltar</a>
+                                <a ng-if="!questaoRespondida" href="javascript:history.back()" class="btn waves-effect waves-light btn teal darken-2 btnContentL" style="width:140px;">Voltar</a>
                             </div>
                         </div>
 
                         <div class="col s12 l6 btnContentDiv">
                             <div class="section">
-                                <a href="" ng-click="responderQuestao()" class="btn waves-effect waves-light btn teal darken-2 btnContentR " style="width:140px;">Confirmar</a>
+                                <a ng-if="!questaoRespondida" href="" ng-click="responderQuestao()" class="btn waves-effect waves-light btn teal darken-2 btnContentR " style="width:140px;">Confirmar</a>
+                                <a ng-if="questaoRespondida" href="" ng-click="btnContinuar()" class="btn waves-effect waves-light btn teal darken-2 btnContentR " style="width:140px;">Continuar</a>
                             </div>
                         </div>
 
                         <div class="col s12 l6 btnContentDiv hide-on-large-only">
                             <div class="section">
-                                <a href="javascript:history.back()" class="btn waves-effect waves-light btn teal darken-2 btnContentL" style="width:140px;">Voltar</a>
+                                <a ng-if="!questaoRespondida" href="javascript:history.back()" class="btn waves-effect waves-light btn teal darken-2 btnContentL" style="width:140px;">Voltar</a>
                             </div>
                         </div>
                     </div>

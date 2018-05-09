@@ -97,7 +97,7 @@ app.service('AutenticacaoService',
         };
 
         this.responderQuestao = function(dados){
-            console.log('dados21->',dados);
+            
             return  $http({
                 method : 'POST',
                 url : 'corrige',
@@ -109,7 +109,7 @@ app.service('AutenticacaoService',
         };
 
         this.inicializarQuestao = function(dados){
-            //console.log('dados21->',dados);
+            
             return  $http({
                 method : 'POST',
                 url : 'questoes',

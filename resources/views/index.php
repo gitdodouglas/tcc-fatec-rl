@@ -16,6 +16,10 @@
       
           
       <style>
+        .respostaCondicao{
+            margin-bottom: 40px;
+            font-size:30px;
+        }
         .btnContentDiv{
             text-align: center;
         }
