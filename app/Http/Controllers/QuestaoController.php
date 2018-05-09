@@ -195,9 +195,6 @@ class QuestaoController extends Controller
 
             /* Recupera o desempenho da questão escolhida */
             $performanceQuestion = $performanceQuestionController->read($questionUser->id);
-            
-            /* Recupera a ID do tópico atual */
-            $topicoId = $userPerformance->topic_id;
 
             /* Avalia a resposta dada */
             switch ($alternative->right_answer)
@@ -302,9 +299,21 @@ class QuestaoController extends Controller
 
 
             }
-
+            
+            /* Instancia um novo controller de tópicos */
+            $newTopicController = new TopicController;
+            
+            /* Recupera novamente a ID do nível atual */
+            $newLevelId = $newTopicController->getLevel($userPerformance->topic_id)->id;
+            
+            /* Recupera a ID do tópico atual */
+            $topicoId = $userPerformance->topic_id;
+            
+            /* Devolve a ID do próximo tópico */
             $proxTopico = ($topicoId + 1);
-            $proxNivel = ($levelId + 1);
+            
+            /* Devolve a ID do próximo nível */
+            $proxNivel = ($newLevelId + 1);
 
             return [
                 'codigo' => 'success',
