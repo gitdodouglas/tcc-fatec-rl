@@ -87,13 +87,15 @@ app.controller("questaoController", function($scope, $http, $cookieStore, Autent
         $scope.btnModalContinuar = function(){
             switch($scope.cdDesbloqueio){
                 case 1:
-                    $state.go('topicos',{id : ($scope.proxNivel-1)}); 
+                    //$state.go('topicos',{id : ($scope.proxNivel-1)});
+                    $state.go('topicos',{id : $scope.proxNivel});
                 break;
                 case 2:
-                    $state.go('topicos',{id : $scope.proxNivel});                    
+                    $state.go('topicos',{id : $scope.proxNivel});
                 break;
-                case 3:                    
-                    $state.go('topicos',{id : ($scope.proxNivel-1)});                   
+                case 3:
+                    //$state.go('topicos',{id : ($scope.proxNivel-1)});
+                    $state.go('topicos',{id : $scope.proxNivel});
                 break;
             } 
         };
@@ -112,7 +114,7 @@ app.controller("questaoController", function($scope, $http, $cookieStore, Autent
                     $scope.abrirModal();
                 break;
                 case 3:
-                    $scope.modalTitle = 'Foi por pouco';
+                    $scope.modalTitle = 'Foi por pouco!';
                     $scope.abrirModal();                    
                 break;
             }
