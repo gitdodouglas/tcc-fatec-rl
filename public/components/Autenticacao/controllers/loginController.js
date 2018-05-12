@@ -23,8 +23,8 @@ app.controller("loginController", function($scope, $http, md5, $cookieStore, Aut
         //$scope.limparDados();
 
 
-        $scope.dados.email = "aluno@aluno.com";
-        $scope.dados.password = "aluno";
+        //$scope.dados.email = "aluno@aluno.com";
+        //$scope.dados.password = "aluno";
 
         //$scope.dados.password = md5.createHash($scope.dados.password);
 
